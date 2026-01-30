@@ -5,54 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pluff — Lapa ir izstrādes stadijā</title>
   <meta name="description" content="Lapa ir izstrādes stadijā. Sazinies ar mums pa tālruni vai e‑pastu." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <main class="wrap" role="main">
-    <section class="card" aria-label="Under construction">
-      <div class="logo" aria-label="Logo">
-        
-        <img src="images/logo.svg" alt="Pluff logo" onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='block';" />
-        <div class="logo-fallback" aria-hidden="true" style="display:none;">
-          <div class="mark"></div>
-          <div class="brand">pluff.lv</div>
+    <section class="card-shell chamfer-lg" aria-label="Under construction">
+      <div class="card-inner chamfer-lg">
+        <div class="logo" aria-label="Logo">
+          <img src="images/logo.svg" alt="Pluff logo" onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='flex';" />
+          <div class="logo-fallback" aria-hidden="true" style="display:none;">
+            <div class="mark chamfer-sm"></div>
+            <div class="brand">pluff.lv</div>
+          </div>
         </div>
+
+        <h1>Lapa ir izstrādes stadijā</h1>
+        <p class="sub">Ja nepieciešama informācija vai piedāvājums, sazinies ar mums.</p>
+
+        <div class="contacts" role="list">
+          <a class="contact-shell chamfer-md" role="listitem" href="tel:+37129327257">
+            <span class="contact-inner chamfer-md">
+              <span class="icon-shell chamfer-sm" aria-hidden="true">
+                <span class="icon-inner chamfer-sm"><i data-lucide="phone"></i></span>
+              </span>
+              <span class="text">
+                <span class="label">Tālrunis</span>
+                <span class="value">+371 29327257</span>
+              </span>
+            </span>
+          </a>
+
+          <a class="contact-shell chamfer-md" role="listitem" href="mailto:info@pluff.lv">
+            <span class="contact-inner chamfer-md">
+              <span class="icon-shell chamfer-sm" aria-hidden="true">
+                <span class="icon-inner chamfer-sm"><i data-lucide="mail"></i></span>
+              </span>
+              <span class="text">
+                <span class="label">E‑pasts</span>
+                <span class="value">info@pluff.lv</span>
+              </span>
+            </span>
+          </a>
+        </div>
+
+        <footer class="footer">
+          <span>© 2026 pluff.lv</span>
+        </footer>
       </div>
-
-      <h1>Lapa ir izstrādes stadijā</h1>
-      <p class="sub">Ja nepieciešama informācija vai piedāvājums, sazinies ar mums.</p>
-
-      <div class="contacts" role="list">
-        <a class="contact chamfer stroke" role="listitem" href="tel:+37129327257">
-          <span class="inner">          <span class="icon chamfer stroke" aria-hidden="true"><span class="inner"><i data-lucide="phone"></i></span></span>
-          <span class="text">
-            <span class="label">Tālrunis</span>
-            <span class="value">+371 29327257</span>
-          </span>
-          </span>
-        </a>
-
-        <a class="contact chamfer stroke" role="listitem" href="mailto:info@pluff.lv">
-          <span class="inner">          <span class="icon chamfer stroke" aria-hidden="true"><span class="inner"><i data-lucide="mail"></i></span></span>
-          <span class="text">
-            <span class="label">E‑pasts</span>
-            <span class="value">info@pluff.lv</span>
-          </span>
-          </span>
-        </a>
-      </div>
-
-      <footer class="footer">
-        <span>© <span id="year"></span> pluff.lv</span>
-      </footer>
     </section>
   </main>
 
   <script>
     lucide.createIcons();
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
