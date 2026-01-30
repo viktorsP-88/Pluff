@@ -1,42 +1,29 @@
 :root{
-  --c-dark:#00224A;
-  --c-gray-dark:#2455A0;
-  --c-gray:#3A67AD;
-  --c-gray-light:#ECF3F7;
-  --c-light:#FFFFFF;
-  --c-accent:#9EBCE1;
-  --bg:var(--c-gray-light);
-  --surface:var(--c-light);
+  --c-dark:#F4F3F4;
+  --c-gray-dark:#AAAAAA;
+  --c-gray:#426FB3;
+  --c-gray-light:#223A64;
+  --c-light:#04112C;
+  --c-accent:#154A9A;
+  --bg:var(--c-light);
+  --surface:color-mix(in srgb, var(--c-light) 82%, var(--c-gray-light));
   --text:var(--c-dark);
   --muted:color-mix(in srgb, var(--c-dark) 70%, transparent);
-  --border:color-mix(in srgb, var(--c-gray) 25%, transparent);
+  --border:color-mix(in srgb, var(--c-gray-dark) 22%, transparent);
   --icon:var(--c-gray-dark);
   --focus:var(--c-gray);
-  --shadow:0 12px 40px rgba(0,34,74,0.12);
+  --shadow:0 18px 60px rgba(0,0,0,0.35);
   --cut-lg:26px;
   --cut-md:18px;
   --cut-sm:14px;
   --stroke:1px;
+  --cut-lg-in:calc(26px - (1px * 2));
+  --cut-md-in:calc(18px - (1px * 2));
+  --cut-sm-in:calc(14px - (1px * 2));
 }
 
-@media (prefers-color-scheme: dark){
-  :root{
-    --c-dark:#F4F3F4;
-    --c-gray-dark:#AAAAAA;
-    --c-gray:#426FB3;
-    --c-gray-light:#223A64;
-    --c-light:#04112C;
-    --c-accent:#154A9A;
-    --bg:var(--c-light);
-    --surface:color-mix(in srgb, var(--c-light) 82%, var(--c-gray-light));
-    --text:var(--c-dark);
-    --muted:color-mix(in srgb, var(--c-dark) 70%, transparent);
-    --border:color-mix(in srgb, var(--c-gray-dark) 22%, transparent);
-    --icon:var(--c-gray-dark);
-    --focus:var(--c-gray);
-    --shadow:0 18px 60px rgba(0,0,0,0.35);
-  }
-}
+
+
 
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -54,7 +41,11 @@ body{
   .chamfer-lg{clip-path:polygon(var(--cut-lg) 0,100% 0,100% calc(100% - var(--cut-lg)),calc(100% - var(--cut-lg)) 100%,0 100%,0 var(--cut-lg))!important;border-radius:0!important}
   .chamfer-md{clip-path:polygon(var(--cut-md) 0,100% 0,100% calc(100% - var(--cut-md)),calc(100% - var(--cut-md)) 100%,0 100%,0 var(--cut-md))!important;border-radius:0!important}
   .chamfer-sm{clip-path:polygon(var(--cut-sm) 0,100% 0,100% calc(100% - var(--cut-sm)),calc(100% - var(--cut-sm)) 100%,0 100%,0 var(--cut-sm))!important;border-radius:0!important}
+  .chamfer-lg-in{clip-path:polygon(var(--cut-lg-in) 0,100% 0,100% calc(100% - var(--cut-lg-in)),calc(100% - var(--cut-lg-in)) 100%,0 100%,0 var(--cut-lg-in))!important;border-radius:0!important}
+  .chamfer-md-in{clip-path:polygon(var(--cut-md-in) 0,100% 0,100% calc(100% - var(--cut-md-in)),calc(100% - var(--cut-md-in)) 100%,0 100%,0 var(--cut-md-in))!important;border-radius:0!important}
+  .chamfer-sm-in{clip-path:polygon(var(--cut-sm-in) 0,100% 0,100% calc(100% - var(--cut-sm-in)),calc(100% - var(--cut-sm-in)) 100%,0 100%,0 var(--cut-sm-in))!important;border-radius:0!important}
 }
+
 
 .wrap{
   min-height:100%;
