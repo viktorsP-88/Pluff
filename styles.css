@@ -724,6 +724,57 @@ position: relative;
   z-index:-1;
 }
 
+
+
+/* CTA light variant (used for Google Maps / Waze buttons) */
+.cta--light{
+  color: rgb(var(--c-bg));
+}
+.cta--light::before{
+  background: #fff;
+}
+.cta--light::after{
+  border: 1px solid rgb(var(--c-bg) / 0.14);
+}
+
+/* Map CTA layout tweaks (inherits .cta shape) */
+.contact-map__actions .contact-map__btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  /* equal width (Waze 1:1 with Google Maps) */
+  width: clamp(120px, 32vw, 164px);
+  padding: 0 18px;
+  height: 52px; /* keep the same as the main CTA */
+  white-space: nowrap;
+}
+
+.contact-map__actions .contact-map__btn .cta__icon{
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+}
+.contact-map__actions .contact-map__btn .cta__icon svg{
+  width: 18px;
+  height: 18px;
+  display: block;
+  stroke: currentColor;
+}
+
+.contact-map__actions .contact-map__btn:hover{
+  filter: brightness(0.98);
+}
+
+@media (max-width: 780px){
+  .contact-map__actions .contact-map__btn{
+    width: 100%;
+  }
+  .contact-map__actions-inner{
+    width: 100%;
+  }
+}
 .cta:hover{ filter: brightness(1.05); }
 
 
@@ -1607,7 +1658,7 @@ color: rgba(246, 243, 236, 0.64);
   height: 420px;
   border: 0;
   display: block;
-  filter: grayscale(1) brightness(0.82) contrast(1.18) sepia(1) hue-rotate(205deg) saturate(4);
+  filter: grayscale(1) brightness(0.75) contrast(1.15) sepia(1) hue-rotate(210deg) saturate(3);
 }
 
 .contact-map__js{
@@ -1622,7 +1673,7 @@ color: rgba(246, 243, 236, 0.64);
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0, 26, 60, 0.58);
+  background: rgb(var(--c-bg) / 0.70);
   mix-blend-mode: multiply;
   pointer-events:none;
 }
@@ -1643,6 +1694,83 @@ color: rgba(246, 243, 236, 0.64);
           mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 22s7-5.2 7-12A7 7 0 0 0 5 10c0 6.8 7 12 7 12z'/><circle cx='12' cy='10' r='2.6'/></svg>") center / contain no-repeat;
   filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
 }
+
+/* Map action buttons inside the map frame (Google Maps / Waze)
+   Requirements:
+   - White background
+   - Dark-blue text + icon (uses token: --c-bg)
+   - Equal width (50/50)
+   - No overlay/opacity/gradient/pseudo-element layers
+*/
+.contact-map__actions{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  z-index: 6;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+
+  padding: 0 10px;
+
+  /* allow map interactions except on the buttons */
+  pointer-events: none;
+}
+
+.contact-map__actions-inner{
+  grid-column: 2;
+  display: flex;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.contact-map__actions .contact-action{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  /* equal width (Waze 1:1 with Google Maps) */
+  width: clamp(132px, 22vw, 164px);
+
+  padding: 12px 14px;
+
+  background: #fff !important;
+  color: rgb(var(--c-bg)) !important;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+
+  border: 1px solid rgb(var(--c-bg) / 0.14);
+  border-radius: 12px;
+}
+
+/* Kill the old layered CTA/panel effects for these buttons */
+.contact-map__actions .contact-action::before,
+.contact-map__actions .contact-action::after{
+  content: none !important;
+  display: none !important;
+}
+
+.contact-map__actions .contact-action__icon{
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+}
+
+.contact-map__actions .contact-action__icon svg{
+  width: 18px;
+  height: 18px;
+  display: block;
+  stroke: currentColor;
+}
+
+.contact-map__actions .contact-action:hover{
+  background: #f2f6fb !important;
+}
+
 
 
 @media (max-width: 900px){
@@ -1754,7 +1882,7 @@ a:hover{ text-decoration: none; }
 /* optical sizing per logo (matches provided reference) */
 .about-logo--saf .partner__img{ height: 56px; }
 .about-logo--hansa .partner__img{ height: 52px; }
-.about-logo--letera .partner__img{ height: 44px; }
+.about-logo--letera .partner__img{ height: 33px; }
 .about-logo--na .partner__img{ height: 56px; }
 .about-logo--erica .partner__img{ height: 46px; }
 
@@ -1770,7 +1898,7 @@ a:hover{ text-decoration: none; }
   .about-logo{ padding: 12px 14px; }
   .about-logo--saf .partner__img{ height: 50px; }
   .about-logo--hansa .partner__img{ height: 46px; }
-  .about-logo--letera .partner__img{ height: 40px; }
+  .about-logo--letera .partner__img{ height: 23px; }
   .about-logo--na .partner__img{ height: 50px; }
   .about-logo--erica .partner__img{ height: 42px; }
 }
@@ -1817,7 +1945,7 @@ a:hover{ text-decoration: none; }
   .about-logo{ padding: 8px 8px; }
   .about-logo--saf .partner__img{ height: 38px; }
   .about-logo--hansa .partner__img{ height: 34px; }
-  .about-logo--letera .partner__img{ height: 30px; }
+  .about-logo--letera .partner__img{ height: 23px; }
   .about-logo--na .partner__img{ height: 38px; }
   .about-logo--erica .partner__img{ height: 32px; }
 }
@@ -1826,7 +1954,7 @@ a:hover{ text-decoration: none; }
   .about-logo{ padding: 6px 6px; }
   .about-logo--saf .partner__img{ height: 34px; }
   .about-logo--hansa .partner__img{ height: 30px; }
-  .about-logo--letera .partner__img{ height: 28px; }
+  .about-logo--letera .partner__img{ height: 21px; }
   .about-logo--na .partner__img{ height: 34px; }
   .about-logo--erica .partner__img{ height: 30px; }
 }
@@ -2065,7 +2193,8 @@ a:hover{ text-decoration: none; }
   border: 1px solid rgb(255 255 255 / 0.10);
   box-shadow: 0 18px 60px rgb(0 0 0 / 0.22);
   clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-  height: var(--paveiktais-media-h);
+  /* Responsive height: scales down on mobile instead of staying fixed */
+  height: clamp(220px, 60vw, var(--paveiktais-media-h));
 }
 
 /* Media fills the clipped frame */
@@ -2257,7 +2386,6 @@ a:hover{ text-decoration: none; }
   left:0;
   right:0;
   bottom:0;
-  transform:none;
   display:flex;
   gap:0;
   width:100%;
@@ -2265,22 +2393,49 @@ a:hover{ text-decoration: none; }
   z-index:3;
   padding:0;
 }
+
+/* Map action buttons: white background, dark-blue text/icon, 50/50 width, inside map frame */
 .contact-map__actions .contact-action{
-  flex:1 1 0;
+  flex: 1 1 0;
+  display:flex;
+  align-items:center;
   justify-content:center;
+  gap:10px;
+  padding: 14px 16px;
+  background: rgb(255 255 255 / 0.96);
+  color: rgb(var(--c-bg));
+  font-weight: 700;
+  letter-spacing: 0.01em;
   text-align:center;
-  border-top: 1px solid rgb(255 255 255 / 0.12);
-  background: rgb(var(--c-bg) / 0.55);
-  backdrop-filter: blur(8px);
+
+  /* Keep the angular shape but avoid the previous layered pseudo backgrounds */
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  border-top: 1px solid rgb(var(--c-bg) / 0.14);
 }
+
+.contact-map__actions .contact-action::before,
+.contact-map__actions .contact-action::after{
+  display:none !important;
+}
+
 .contact-map__actions .contact-action + .contact-action{
-  border-left: 1px solid rgb(255 255 255 / 0.12);
+  border-left: 1px solid rgb(var(--c-bg) / 0.14);
+}
+
+.contact-map__actions .contact-action__icon{
+  display:inline-flex;
+  width:18px;
+  height:18px;
 }
 
 @media (max-width: 780px){
-  .contact-map__actions{ bottom: 0; }
+  .contact-map__actions .contact-action{
+    padding: 12px 14px;
+    font-weight: 700;
+  }
 }
-}
+
+
 
 .footer .wrap.footer__wrap{
   max-width: none;
@@ -2326,3 +2481,124 @@ a:hover{ text-decoration: none; }
   }
 }
 
+
+
+/* Map action buttons (Google Maps / Waze) */
+.contact-action{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 16px;
+  color: rgb(var(--c-bg));
+  font-weight:600;
+}
+.contact-action__icon{ width:18px; height:18px; display:inline-flex; }
+.contact-action__icon svg{ width:18px; height:18px; display:block; }
+.contact-action:hover{ background: rgb(255 255 255 / 1); }
+
+
+@media (max-width: 780px){
+  .contact-map__actions{
+    grid-template-columns: 1fr;
+    padding: 0 12px;
+  }
+  .contact-map__actions-inner{
+    grid-column: 1;
+  }
+}
+
+/* v134: Map buttons subtle hover (token-based) */
+.contact-map__btn {
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.contact-map__btn:hover {
+  background: rgba(var(--c-bg), 0.06);
+  transform: translateY(-1px);
+}
+
+.contact-map__btn:active {
+  transform: translateY(0);
+}
+
+
+
+/* v136 – Proper overlay hover for map buttons */
+.contact-map__btn::before {
+  transition: background 0.25s ease;
+}
+
+.contact-map__btn:hover::before {
+  background: rgb(var(--c-bg) / 0.12);
+}
+
+
+/* v137 – Map buttons: true overlay tint over white (does not replace base white) */
+.contact-map__btn{
+  position: relative;
+  overflow: hidden; /* keep overlay inside button shape */
+}
+
+.contact-map__btn::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(var(--c-bg));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+/* keep content above overlay */
+.contact-map__btn > *{
+  position: relative;
+  z-index: 1;
+}
+
+.contact-map__btn:hover::after{
+  opacity: 0.12;
+}
+
+
+/* v138 – Static Maps embed (replaces iframe) */
+.contact-map__js{
+  overflow: hidden;
+}
+
+.contact-map__static{
+  display: block;
+  width: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.contact-map__img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* v139 – Map media wrapper: show iframe until Static Maps key is set */
+.contact-map__media{
+  position: relative;
+}
+
+.contact-map__static,
+.contact-map__iframe{
+  width: 100%;
+  display: block;
+}
+
+.contact-map__iframe{
+  border: 0;
+  height: 420px;
+}
+
+@media (max-width: 780px){
+  .contact-map__iframe{ height: 320px; }
+}
+
+
+/* Leaflet map container (fallback) */
+#map{width:100%;height:100%;}
