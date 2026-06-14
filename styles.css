@@ -73,12 +73,6 @@
   text-transform: uppercase;
 }
 
-.service-card__title{
-}
-
-.whyus-item__title{
-}
-
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
@@ -161,7 +155,16 @@ body{
 
 /* ===== Header glow (Figma) =====
    390×390, fill #7698FF @ 80%, layer blur 600, positioned (x=1050, y=-172)
+   Wrapper is position:fixed covering viewport with overflow:hidden —
+   clips Firefox blur bleed without affecting Chrome/Safari appearance.
 */
+.topbar-glow-clip{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:49;
+}
 .topbar-glow{
   position:absolute;
   width: var(--glow-size);
@@ -171,7 +174,6 @@ body{
   background: rgb(var(--glow-color) / var(--glow-alpha));
   filter: blur(var(--glow-blur));
   pointer-events:none;
-  z-index:0;
 }
 
 .topbar__inner{
@@ -349,9 +351,8 @@ body{
 /* ===== Hero bottom gradient overlay (Figma spec) ===== */
 .hero__media-wrap{
   position: relative;
-  height: min(768px, calc(100vh - 160px)); /* same as v19 */
+  height: min(768px, calc(100vh - 160px));
   border: 1px solid rgb(var(--c-border) / .10);
-  position: relative;
   overflow: hidden;
   background: #000;
 }
@@ -375,15 +376,6 @@ body{
 
 .hero{ padding: var(--page-pad) 0; }
 .hero__frame{ position:relative; }
-.hero__media-wrap{
-  position: relative;
-  /* Desktop hero height caps at 768px, leaving breathing room in the viewport */
-  height: min(768px, calc(100vh - 160px));
-  border: 1px solid rgb(var(--c-border) / .10);
-  position: relative;
-  overflow: hidden;
-  background: #000;
-}
 .hero__img, .hero__img img{
   position:absolute; inset:0; width:100%; height:100%;
 }
@@ -391,7 +383,10 @@ body{
 .hero__video{
   position:absolute; inset:0; width:100%; height:100%;
   object-fit: cover; display:block;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
+.hero__video.is-ready{ opacity: 1; }
 .hero__media-wrap::before{
   content:"";
   position:absolute;
@@ -430,19 +425,6 @@ body{
   line-height: 1.6;
 }
 
-/* Test sections */
-.test-section{
-  height: 820px;
-  border-top: 1px solid rgb(var(--c-border) / .08);
-  background:
-    radial-gradient(900px 320px at 30% 20%, rgb(var(--c-text) / .06), transparent 62%),
-    linear-gradient(180deg, rgb(3 8 18 / .35), rgb(3 8 18 / .10));
-}
-.test-section--alt{
-  background:
-    radial-gradient(900px 320px at 70% 30%, rgb(var(--c-accent) / .10), transparent 65%),
-    linear-gradient(180deg, rgb(3 8 18 / .25), rgb(3 8 18 / .10));
-}
 
 @media (max-width: 980px){
   /* Keep the same wrap system; padding is controlled via --page-pad tokens */
@@ -455,33 +437,6 @@ body{
 
 
 
-.hero-gradient{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 360px;
-  pointer-events: none;
-  background: linear-gradient(
-    0deg,
-    #04112C 0%,
-    rgba(6, 19, 48, 0.43) 50%,
-    rgba(10, 10, 11, 0.00) 100%
-  );
-  z-index: 1;
-}
-
-.hero-content{
-  position: relative;
-  z-index: 2;
-}
-
-
-/* Header becomes sticky only after scroll */
-.topbar.is-sticky{
-  position: sticky;
-  top: 0;
-}
 
 
 main{ padding-top: 104px; }
@@ -517,13 +472,6 @@ main{ padding-top: 104px; }
 
 
 
-.cta-btn{
-  border: none;
-position: relative;
-}
-
-
-
 
 
 
@@ -553,15 +501,6 @@ position: relative;
 }
 
 /* Shift nav left to sit 32px from symbol */
-/* CTA inside stroke (matches Figma "Inside") */
-.cta-btn::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border:1px solid rgba(255,255,255,0.16);
-  pointer-events:none;
-  clip-path: inherit;
-}
 
 /* CTA: inside stroke (white 16%) with chamfer corners (matches nav geometry) */
 .cta{
@@ -1417,129 +1356,7 @@ color: rgba(246, 243, 236, 0.64);
   align-items: start;
 }
 
-.about__p{
-  margin: 0 0 16px;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: rgba(246, 243, 236, 0.64);
-}
 
-.about__col--cards{
-  display: grid;
-  gap: 16px;
-}
-
-.about-card{
-  background: rgb(var(--c-bg) / 0.35);
-  border: 1px solid rgb(255 255 255 / 0.10);
-  padding: 18px 18px;
-  box-shadow: 0 18px 60px rgb(0 0 0 / 0.22);
-}
-
-.about-card__value{
-  font-family: "Oswald", sans-serif;
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 32px;
-  letter-spacing: -0.035em;
-  color: rgba(246, 243, 236, 0.88);
-  margin-bottom: 6px;
-}
-.about-card__label{
-  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 10px;
-  font-weight: 300;
-  line-height: 12px;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
-  color: rgba(246, 243, 236, 0.64);
-}
-
-.contact__grid{
-  display: grid;
-  grid-template-columns: 440px minmax(0, 1fr);
-  gap: 32px;
-  align-items: stretch;
-}
-
-.contact__info{
-  background: rgb(var(--c-bg) / 0.35);
-  border: 1px solid rgb(255 255 255 / 0.10);
-  padding: 22px;
-}
-
-.contact-row{
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgb(255 255 255 / 0.10);
-  text-decoration: none;
-}
-
-.contact-row:last-child{
-  border-bottom: 0;
-}
-
-.contact-row__label{
-  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 10px;
-  font-weight: 300;
-  line-height: 12px;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
-  color: rgba(246, 243, 236, 0.64);
-}
-
-.contact-row__value{
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: rgba(246, 243, 236, 0.88);
-  text-align: right;
-}
-
-.contact-row:hover .contact-row__value{
-  text-decoration: underline;
-}
-
-.contact__note{
-  margin-top: 14px;
-  font-family: "Inter", sans-serif;
-  font-size: 12px;
-  line-height: 18px;
-  color: rgba(246, 243, 236, 0.48);
-}
-
-.contact__map{
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid rgb(255 255 255 / 0.10);
-  background: rgb(var(--c-bg) / 0.35);
-  min-height: 360px;
-}
-
-.contact__iframe{
-  width: 100%;
-  height: 100%;
-  min-height: 360px;
-  border: 0;
-  filter: grayscale(0.9) brightness(0.82) contrast(1.18) hue-rotate(210deg) saturate(2.8);
-  transition: filter 0.3s ease;
-}
-
-.contact__map::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 40, 90, 0.55);
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
 
 
 @media (max-width: 1100px){
@@ -1560,20 +1377,6 @@ color: rgba(246, 243, 236, 0.64);
   }
 }
 
-/* Contact icons */
-.contact-row{
-  align-items: center;
-}
-.contact-row__left{
-  display:flex;
-  align-items:center;
-  gap: 12px;
-  min-width: 0;
-}
-.contact-row__icon{
-  flex: 0 0 auto;
-  color: rgb(var(--c-accent) / 1);
-}
 
 
 /* =========================
@@ -1614,36 +1417,6 @@ color: rgba(246, 243, 236, 0.64);
   text-align: center;
 }
 
-.contact-item{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-decoration: none;
-  color: rgba(246, 243, 236, 0.88);
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.contact-item__icon{
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--c-accent);
-}
-.contact-item__icon svg{ width: 24px; height: 24px; display:block; }
-
-.contact-item:hover .contact-item__text{ text-decoration: underline; }
-
-.contact-divider{
-  width: 1px;
-  height: 28px;
-  background: rgb(246 243 236 / 0.16);
-  justify-self: center;
-}
 
 .contact-map{
   margin-top: 24px;
@@ -1651,11 +1424,6 @@ color: rgba(246, 243, 236, 0.64);
   background: rgb(var(--c-bg) / 0.10);
   position: relative;
   overflow: hidden;}
-.contact-map__iframe{
-  width: 100%;
-  height: 420px;
-  border: 0;
-  display: block;}
 
 
 
@@ -1891,21 +1659,9 @@ a:hover{ text-decoration: none; }
     padding: 10px 12px;
   }
 
-  /* vertical separator between the 2 columns (on left-column items only) */
-  .about-logo:nth-child(odd):not(:nth-child(5))::after{
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 64px;
-    background: rgba(246, 243, 236, 0.18);
-  }
-
-  /* last logo sits alone on the last row, centered */
+  /* last logo centered under left column logos */
   .about-logo:nth-child(5){
-    grid-column: 1 / -1;
+    grid-column: 1;
   }
 }
 
@@ -2594,6 +2350,7 @@ a:hover{ text-decoration: none; }
   align-items:center;
   justify-content:center;
   border-radius:999px;
+  overflow:hidden; /* Firefox fix: clips flag img to circle */
   text-decoration:none;
   background: transparent;
   padding:0 !important;
