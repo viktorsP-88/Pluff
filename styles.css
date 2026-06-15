@@ -1021,11 +1021,26 @@ main{ padding-top: 104px; }
 /* Service media placeholder (keeps layout stable even if /images/services are missing) */
 .service-card__media{
   display:block;
+  position:relative;
+  overflow:hidden;
   width:100%;
   aspect-ratio: 16 / 9;
   background:
     radial-gradient(1200px 700px at 70% 10%, rgb(var(--c-accent) / 0.25), transparent 55%),
     linear-gradient(180deg, rgb(8 22 54 / 1), rgb(var(--c-bg) / 1));
+}
+.service-card__media::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.07) 50%,transparent 100%);
+  animation:ghost-sweep 1.9s ease-in-out infinite;
+  z-index:1;
+}
+@keyframes ghost-sweep{
+  0%{transform:translateX(-120%)}
+  100%{transform:translateX(220%)}
 }
 .service-card__media--placeholder{
   position: relative;

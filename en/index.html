@@ -41,9 +41,23 @@ html,body{background:#04112C}
 <script>
 (function(){
   var el=document.getElementById('pluff-loader');
-  function hide(){el.classList.add('out');setTimeout(function(){el.style.display='none'},500);}
-  if(document.readyState==='complete'){setTimeout(hide,200);}
-  else{window.addEventListener('load',function(){setTimeout(hide,200)});}
+  var done=false;
+  function hide(){if(done)return;done=true;el.classList.add('out');setTimeout(function(){el.style.display='none'},500);}
+  function watchHero(){
+    var img=document.querySelector('picture img');
+    if(!img){setTimeout(hide,3000);return;}
+    if(img.complete&&img.naturalWidth>0){setTimeout(hide,150);}
+    else{
+      img.addEventListener('load',function(){setTimeout(hide,150)});
+      img.addEventListener('error',function(){setTimeout(hide,150)});
+      setTimeout(hide,4000);
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',watchHero);
+  } else {
+    watchHero();
+  }
 })();
 </script>
 <div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
