@@ -40,9 +40,14 @@ html,body{background:#04112C}
 </div>
 <script>
 (function(){
+  document.documentElement.classList.add('page-loading');
   var el=document.getElementById('pluff-loader');
   var done=false;
-  function hide(){if(done)return;done=true;el.classList.add('out');setTimeout(function(){el.style.display='none'},500);}
+  function removeSkeleton(){
+    document.documentElement.classList.remove('page-loading');
+    document.body && document.body.classList.remove('page-loading');
+  }
+  function hide(){if(done)return;done=true;el.classList.add('out');setTimeout(function(){el.style.display='none'},500);setTimeout(removeSkeleton,300);}
   function watchHero(){
     var img=document.querySelector('picture img');
     if(!img){setTimeout(hide,3000);return;}

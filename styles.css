@@ -1269,7 +1269,7 @@ color: rgba(246, 243, 236, 0.64);
   /* Compact spacing when content becomes one column */
   .whyus{ padding: 72px 0 72px; }
   .whyus__head{ margin-bottom: 32px; text-align:left; }
-  .whyus__lead{ font-size: 15px; line-height: 22px; }
+  .whyus__lead{ font-size: 15px; line-height: 22px; text-align: left; margin: 0; }
   .whyus-item{ min-height: auto; }
 }
 @media (max-width: 680px){
@@ -1692,21 +1692,21 @@ a:hover{ text-decoration: none; }
 
 
 @media (max-width: 520px){
-  .about-logo{ padding: 8px 8px; }
-  .about-logo--saf .partner__img{ height: 38px; }
-  .about-logo--hansa .partner__img{ height: 34px; }
-  .about-logo--letera .partner__img{ height: 23px; }
-  .about-logo--na .partner__img{ height: 38px; }
-  .about-logo--erica .partner__img{ height: 32px; }
+  .about-logo{ padding: 10px 10px; }
+  .about-logo--saf .partner__img{ height: 57px; }
+  .about-logo--hansa .partner__img{ height: 51px; }
+  .about-logo--letera .partner__img{ height: 35px; }
+  .about-logo--na .partner__img{ height: 57px; }
+  .about-logo--erica .partner__img{ height: 48px; }
 }
 
 @media (max-width: 380px){
-  .about-logo{ padding: 6px 6px; }
-  .about-logo--saf .partner__img{ height: 34px; }
-  .about-logo--hansa .partner__img{ height: 30px; }
-  .about-logo--letera .partner__img{ height: 21px; }
-  .about-logo--na .partner__img{ height: 34px; }
-  .about-logo--erica .partner__img{ height: 30px; }
+  .about-logo{ padding: 8px 8px; }
+  .about-logo--saf .partner__img{ height: 51px; }
+  .about-logo--hansa .partner__img{ height: 45px; }
+  .about-logo--letera .partner__img{ height: 32px; }
+  .about-logo--na .partner__img{ height: 51px; }
+  .about-logo--erica .partner__img{ height: 45px; }
 }
 
 /* v61: Contact cards (style like nav, 14px cut corners) */
@@ -2666,3 +2666,161 @@ a:hover{ text-decoration: none; }
 /* Prevent navbox overflowing viewport on any narrow landscape */
 .navbox { min-width: 0; overflow: visible; }
 .nav { flex-wrap: nowrap; overflow: hidden; }
+
+
+/* =========================
+   SKELETON / GHOST LOADING
+========================= */
+@keyframes skel-sweep {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(220%);  }
+}
+
+/* Base skeleton block */
+.skel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.09);
+  color: transparent !important;
+  pointer-events: none;
+  user-select: none;
+}
+.skel > * { visibility: hidden; }
+.skel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.11) 50%,
+    transparent 100%
+  );
+  animation: skel-sweep 1.9s ease-in-out infinite;
+}
+
+/* Inline text skeleton — wraps inline text nodes */
+.skel-line {
+  display: inline-block;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.09);
+  color: transparent !important;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.skel-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.13) 50%,
+    transparent 100%
+  );
+  animation: skel-sweep 1.9s ease-in-out infinite;
+}
+
+/* Hero text skeletons */
+html.page-loading .hero__title {
+  color: transparent !important;
+}
+html.page-loading .hero__title::before {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 1em;
+  margin-bottom: 0.3em;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.12);
+  position: relative;
+  overflow: hidden;
+}
+html.page-loading .hero__title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.12) 50%,transparent 100%);
+  animation: skel-sweep 1.9s ease-in-out infinite;
+}
+
+/* Section titles + leads while loading */
+html.page-loading .services__title,
+html.page-loading .services__lead,
+html.page-loading .whyus__title,
+html.page-loading .whyus__lead,
+html.page-loading .paveiktais__title,
+html.page-loading .about__title,
+html.page-loading .about__lead,
+html.page-loading .contact__title,
+html.page-loading .contact__lead {
+  color: transparent !important;
+  background: rgba(255,255,255,0.09);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+html.page-loading .services__title::after,
+html.page-loading .services__lead::after,
+html.page-loading .whyus__title::after,
+html.page-loading .whyus__lead::after,
+html.page-loading .paveiktais__title::after,
+html.page-loading .about__title::after,
+html.page-loading .about__lead::after,
+html.page-loading .contact__title::after,
+html.page-loading .contact__lead::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.13) 50%,transparent 100%);
+  animation: skel-sweep 1.9s ease-in-out infinite;
+}
+
+/* Service card text while image loads */
+html.page-loading .service-card__title,
+html.page-loading .service-card__text {
+  color: transparent !important;
+  background: rgba(255,255,255,0.07);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+html.page-loading .service-card__title::after,
+html.page-loading .service-card__text::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.11) 50%,transparent 100%);
+  animation: skel-sweep 1.9s ease-in-out infinite;
+}
+
+/* Whyus grid item icons + titles */
+html.page-loading .whyus-item__icon {
+  opacity: 0;
+}
+html.page-loading .whyus-item__title {
+  color: transparent !important;
+  background: rgba(255,255,255,0.09);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+html.page-loading .whyus-item__title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.13) 50%,transparent 100%);
+  animation: skel-sweep 1.9s ease-in-out infinite;
+}
+
+/* Smooth reveal when page-loading removed */
+.hero__title,
+.services__title, .services__lead,
+.whyus__title, .whyus__lead,
+.paveiktais__title,
+.about__title, .about__lead,
+.contact__title, .contact__lead,
+.service-card__title, .service-card__text,
+.whyus-item__icon, .whyus-item__title {
+  transition: color .35s ease, background .35s ease, opacity .35s ease;
+}

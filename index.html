@@ -40,10 +40,25 @@ html,body{background:#04112C}
 </div>
 <script>
 (function(){
+  // Add skeleton class immediately
+  document.documentElement.classList.add('page-loading');  // html tag (before body exists)
+
   var el=document.getElementById('pluff-loader');
   var done=false;
-  function hide(){if(done)return;done=true;el.classList.add('out');setTimeout(function(){el.style.display='none'},500);}
-  // Dismiss as soon as hero image is ready — don't wait for video/fonts
+
+  function removeSkeleton(){
+    document.documentElement.classList.remove('page-loading');
+    document.body && document.body.classList.remove('page-loading');
+  }
+
+  function hide(){
+    if(done)return;done=true;
+    el.classList.add('out');
+    setTimeout(function(){el.style.display='none'},500);
+    // Remove skeleton shortly after loader fades — content is ready
+    setTimeout(removeSkeleton, 300);
+  }
+
   function watchHero(){
     var img=document.querySelector('picture img');
     if(!img){setTimeout(hide,3000);return;}
@@ -51,7 +66,7 @@ html,body{background:#04112C}
     else{
       img.addEventListener('load',function(){setTimeout(hide,150)});
       img.addEventListener('error',function(){setTimeout(hide,150)});
-      setTimeout(hide,4000); // hard fallback
+      setTimeout(hide,4000);
     }
   }
   if(document.readyState==='loading'){
