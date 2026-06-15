@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>html,body{background:#04112C}</style>
 <title>Pluff — Landing</title>
 <meta content="PLUFF palīdz uzņēmumiem pārvērst inženiertehniskas idejas augstvērtīgos plastmasas produktos — no analīzes un presformām līdz spiedienliešanai un CNC apstrādei." name="description"/>
 <link rel="alternate" hreflang="lv" href="/"/>
@@ -13,9 +14,9 @@
 <meta content="website" property="og:type"/>
 <meta content="PLUFF" property="og:title"/>
 <meta content="No idejas un rasējuma līdz precīzai formai un detaļai — konsultācijas, presformas, spiedienliešana un CNC." property="og:description"/>
-<meta content="images/og/og-image.png" property="og:image"/>
+<meta content="https://viktorsp-88.github.io/Pluff/images/og/og-image.png" property="og:image"/>
 <meta content="PLUFF — augstas precizitātes ražošana" property="og:image:alt"/>
-<meta content="" property="og:url"/>
+<meta content="https://viktorsp-88.github.io/Pluff/" property="og:url"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -396,7 +397,7 @@ if (document.fonts && document.fonts.ready) {
 scheduleServicesAlign();
 
 
-  // Resolve service media by trying common extensions (jpg/png/gif/svg/mp4/webm)
+  // Resolve service media — lazy: only probe when card scrolls into view
   const mediaExts = ['.webp','.png','.jpg','.jpeg','.gif','.svg','.mp4','.webm'];
   const mediaNodes = Array.from(document.querySelectorAll('.service-card__media[data-base]'));
 
@@ -432,7 +433,7 @@ scheduleServicesAlign();
     return null;
   };
 
-  mediaNodes.forEach(async (node) => {
+  const loadServiceMedia = async (node) => {
     const baseName = node.getAttribute('data-base');
     const alt = node.getAttribute('data-alt') || '';
     const res = await resolveMedia(baseName);
@@ -462,7 +463,18 @@ scheduleServicesAlign();
       node.replaceWith(im);
       scheduleServicesAlign();
     }
-  });
+  };
+
+  // Lazy-load service images with IntersectionObserver (load when ~200px before entering viewport)
+  const svcObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      svcObserver.unobserve(entry.target);
+      loadServiceMedia(entry.target);
+    });
+  }, { rootMargin: '200px 0px' });
+
+  mediaNodes.forEach(node => svcObserver.observe(node));
 
 
   // click -> scroll to the corresponding block (stable, no extra post-scroll nudge)

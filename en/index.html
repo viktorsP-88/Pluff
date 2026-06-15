@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>html,body{background:#04112C}</style>
 <title>Pluff — Landing</title>
 <meta content="PLUFF helps companies turn engineering ideas into high-value plastic products — from analysis and molds to injection molding and CNC machining." name="description"/>
 <link rel="alternate" hreflang="lv" href="/"/>
@@ -13,9 +14,9 @@
 <meta content="website" property="og:type"/>
 <meta content="PLUFF" property="og:title"/>
 <meta content="From concept and drawings to a precise mold and part — consulting, molds, injection molding and CNC." property="og:description"/>
-<meta content="../images/og/og-image.png" property="og:image"/>
+<meta content="https://viktorsp-88.github.io/Pluff/images/og/og-image.png" property="og:image"/>
 <meta content="PLUFF — high-precision manufacturing" property="og:image:alt"/>
-<meta content="" property="og:url"/>
+<meta content="https://viktorsp-88.github.io/Pluff/en/" property="og:url"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -431,7 +432,7 @@ scheduleServicesAlign();
     return null;
   };
 
-  mediaNodes.forEach(async (node) => {
+  const loadServiceMedia = async (node) => {
     const baseName = node.getAttribute('data-base');
     const alt = node.getAttribute('data-alt') || '';
     const res = await resolveMedia(baseName);
@@ -461,7 +462,17 @@ scheduleServicesAlign();
       node.replaceWith(im);
       scheduleServicesAlign();
     }
-  });
+  };
+
+  const svcObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      svcObserver.unobserve(entry.target);
+      loadServiceMedia(entry.target);
+    });
+  }, { rootMargin: '200px 0px' });
+
+  mediaNodes.forEach(node => svcObserver.observe(node));
 
 
   // click -> scroll to the corresponding block (stable, no extra post-scroll nudge)

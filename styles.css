@@ -413,7 +413,7 @@ body{
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  font-size: clamp(32px, 6vw, 68px);
+  font-size: clamp(var(--fs-h2, 36px), 6vw, 68px);
   line-height: 1.02;
   color: rgb(var(--c-text) / .96);
 }
@@ -623,6 +623,7 @@ main{ padding-top: 104px; }
   .topbar__inner{ gap: 12px; }
   .nav{ display:none; }
   .cta{ display:none; }
+  .contact-map__nav .cta { display:inline-flex; }
   .burger{ display:inline-flex; }
   /* Menu panel should appear only when opened */
   .topbar.is-menu-open .mobilemenu{ display:block; }
@@ -1160,7 +1161,8 @@ main{ padding-top: 104px; }
 
 .whyus__lead{
   margin: 0;
-  
+  text-align: center;
+
 font-family: "Inter", sans-serif;
 font-weight: 400;
 font-size: 16px;
@@ -1243,7 +1245,6 @@ color: rgba(246, 243, 236, 0.64);
   /* Compact spacing when content becomes one column */
   .whyus{ padding: 72px 0 72px; }
   .whyus__head{ margin-bottom: 32px; text-align:left; }
-  
   .whyus__lead{ font-size: 15px; line-height: 22px; }
   .whyus-item{ min-height: auto; }
 }
@@ -2006,6 +2007,9 @@ a:hover{ text-decoration: none; }
 .paveiktais-carousel__dot{
   width: 10px;
   height: 10px;
+  min-width: 0;
+  padding: 0;
+  flex-shrink: 0;
   border-radius: 999px;
   border: 0;
   background: rgba(246, 243, 236, 0.40);
@@ -2023,6 +2027,9 @@ a:hover{ text-decoration: none; }
 @media (max-width: 700px){
   .paveiktais-carousel{ --paveiktais-peek: 4%; --paveiktais-slide: 92%; }
   .paveiktais-carousel{ --paveiktais-h: 320px; }
+  .paveiktais-carousel__dots{ gap: 6px; }
+  .paveiktais-carousel__dot{ width: 8px; height: 8px; }
+  .paveiktais-carousel__dot.is-active{ width: 28px; }
 }
 
 /* v66: do NOT vertically center paveiktais (keeps carousel + typography intact) */
@@ -2475,13 +2482,24 @@ a:hover{ text-decoration: none; }
 
 .contact-map__nav .contact-map__btn {
   pointer-events: auto;
+  min-width: 130px;
+  justify-content: center;
+}
+
+@media (max-width: 780px) {
+  .contact-map__nav {
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 8px;
+  }
+  .contact-map__nav .contact-map__btn {
+    min-width: 120px;
+  }
 }
 
 @media (max-width: 520px) {
   .contact-map__nav {
     top: 16px;
-    left: 16px;
-    gap: 8px;
   }
 }
 
@@ -2595,3 +2613,22 @@ a:hover{ text-decoration: none; }
 }
 
 /* Custom accent pin centered */
+
+/* =========================
+   LANDSCAPE MOBILE FIX
+   iPhone landscape: >780px wide but very short.
+   Compact the nav so it doesn't overflow.
+========================= */
+@media (max-height: 500px) and (orientation: landscape) {
+  .nav { gap: 16px; }
+  .nav .nav__link { font-size: 13px; }
+  .topbar__inner { gap: 12px; }
+  .navbox__content { padding: 10px 20px 10px 14px; }
+  .topbar-actions { gap: 10px; }
+  /* Reduce hero height in landscape */
+  .hero__media-wrap { height: 100svh; }
+}
+
+/* Prevent navbox overflowing viewport on any narrow landscape */
+.navbox { min-width: 0; overflow: visible; }
+.nav { flex-wrap: nowrap; overflow: hidden; }
