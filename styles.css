@@ -2381,7 +2381,7 @@ a:hover{ text-decoration: none; }
   align-items:center;
   justify-content:center;
   border-radius:999px;
-  overflow:hidden; /* Firefox fix: clips flag img to circle */
+  overflow:visible;
   text-decoration:none;
   background: transparent;
   padding:0 !important;
@@ -2506,8 +2506,18 @@ a:hover{ text-decoration: none; }
 
 .contact-map__nav .contact-map__btn {
   pointer-events: auto;
-  min-width: 130px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
+  min-width: 130px;
+  gap: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.contact-map__btn-icon {
+  flex-shrink: 0;
+  display: block;
 }
 
 @media (max-width: 780px) {
