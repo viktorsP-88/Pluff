@@ -2457,24 +2457,31 @@ a:hover{ text-decoration: none; }
   border: 0;
 }
 
-.contact-map__actions--below {
-  position: static !important;
-  inset: auto !important;
-  margin-top: 14px;
+/* Map nav buttons — overlaid top-left on the map */
+.contact-map__static {
+  pointer-events: auto;
+}
+
+.contact-map__nav {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  z-index: 10;
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
-  justify-content: flex-start;
+  pointer-events: none;
+}
+
+.contact-map__nav .contact-map__btn {
+  pointer-events: auto;
 }
 
 @media (max-width: 520px) {
-  .contact-map__actions--below {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .contact-map__actions--below .contact-map__btn {
-    width: 100%;
-    justify-content: center;
+  .contact-map__nav {
+    top: 16px;
+    left: 16px;
+    gap: 8px;
   }
 }
 
