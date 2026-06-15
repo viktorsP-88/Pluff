@@ -40,23 +40,13 @@ html,body{background:#04112C}
 </div>
 <script>
 (function(){
-  // Add skeleton class immediately
-  document.documentElement.classList.add('page-loading');  // html tag (before body exists)
-
   var el=document.getElementById('pluff-loader');
   var done=false;
-
-  function removeSkeleton(){
-    document.documentElement.classList.remove('page-loading');
-    document.body && document.body.classList.remove('page-loading');
-  }
 
   function hide(){
     if(done)return;done=true;
     el.classList.add('out');
     setTimeout(function(){el.style.display='none'},500);
-    // Remove skeleton shortly after loader fades — content is ready
-    setTimeout(removeSkeleton, 300);
   }
 
   function watchHero(){
@@ -164,7 +154,7 @@ html,body{background:#04112C}
 </div>
 </div>
 </div>
-</section><section aria-label="Pakalpojumi" class="services" id="services">
+</section><section aria-label="Pakalpojumi" class="services sr" id="services">
 <div class="wrap services__wrap">
 <div class="services__grid">
 <div class="services__left">
@@ -199,7 +189,7 @@ html,body{background:#04112C}
 </div>
 </div>
 </div>
-</section><section aria-label="Kāpēc izvēlēties mūs" class="whyus" id="kapec-mes"><div class="wrap whyus__wrap"><div class="whyus__head"><h2 class="whyus__title">Kāpēc izvēlēties PLUFF?</h2><p class="whyus__lead">Apvienojam pieredzi, rūpību un atklātu komunikāciju. Katram projektam pieejam kā partneri – meklējot optimālāko risinājumu, nevis ātrāko kompromisu.</p></div><div class="whyus__grid" role="list"><article class="whyus-item" role="listitem"><svg aria-hidden="true" class="whyus-item__icon" focusable="false" height="52" viewbox="0 0 24 24" width="52">
+</section><section aria-label="Kāpēc izvēlēties mūs" class="whyus sr" id="kapec-mes"><div class="wrap whyus__wrap"><div class="whyus__head"><h2 class="whyus__title">Kāpēc izvēlēties PLUFF?</h2><p class="whyus__lead">Apvienojam pieredzi, rūpību un atklātu komunikāciju. Katram projektam pieejam kā partneri – meklējot optimālāko risinājumu, nevis ātrāko kompromisu.</p></div><div class="whyus__grid" role="list"><article class="whyus-item" role="listitem"><svg aria-hidden="true" class="whyus-item__icon" focusable="false" height="52" viewbox="0 0 24 24" width="52">
 <g stroke="rgb(var(--c-accent) / 0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none">
 <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
 </g>
@@ -215,7 +205,7 @@ html,body{background:#04112C}
 <g stroke="rgb(var(--c-accent) / 0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none">
 <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a8 8 0 0 1 16 0v3"/>
 </g>
-</svg><h3 class="whyus-item__title">Inženiertehniskā kompetence</h3></article></div></div></section><section class="section section--paveiktais" id="paveiktais"><div class="wrap paveiktais__wrap"><div class="paveiktais__head paveiktais__head--center"><h2 class="paveiktais__title">Paveiktais</h2><p class="paveiktais__lead"></p></div><div class="paveiktais-carousel" data-carousel="paveiktais" data-gallery-base="images/gallery/" data-gallery-label-prefix="Attēls">
+</svg><h3 class="whyus-item__title">Inženiertehniskā kompetence</h3></article></div></div></section><section class="section section--paveiktais sr" id="paveiktais"><div class="wrap paveiktais__wrap"><div class="paveiktais__head paveiktais__head--center"><h2 class="paveiktais__title">Paveiktais</h2><p class="paveiktais__lead"></p></div><div class="paveiktais-carousel" data-carousel="paveiktais" data-gallery-base="images/gallery/" data-gallery-label-prefix="Attēls">
 <div class="paveiktais-carousel__viewport">
 <div class="paveiktais-carousel__track"></div>
 </div>
@@ -233,7 +223,7 @@ html,body{background:#04112C}
 </div>
 </div>
 </div>
-</div></div></section><section class="about" id="par-mums"><div class="wrap about__wrap"><div class="about__head"><h2 class="about__title">Par mums</h2><p class="about__lead">PLUFF ir mūsdienīgs uzņēmums, kas specializējas augstas precizitātes plastmasas formu un detaļu ražošanā. Tas savu darbību uzsāka 2025.gadā. SIA PLUFF dibinājuši A/S “SAF Tehnika”, A/S “HansaMatrix”, Latvijas Elektronikas un elektronikas rūpniecības asociācija, SIA “Company NA”, un SIA “Erica Synths”.</p></div><div class="about__grid"><div class="about__col"></div></div><div aria-label="Partneri" class="about-logos">
+</div></div></section><section class="about sr" id="par-mums"><div class="wrap about__wrap"><div class="about__head"><h2 class="about__title">Par mums</h2><p class="about__lead">PLUFF ir mūsdienīgs uzņēmums, kas specializējas augstas precizitātes plastmasas formu un detaļu ražošanā. Tas savu darbību uzsāka 2025.gadā. SIA PLUFF dibinājuši A/S “SAF Tehnika”, A/S “HansaMatrix”, Latvijas Elektronikas un elektronikas rūpniecības asociācija, SIA “Company NA”, un SIA “Erica Synths”.</p></div><div class="about__grid"><div class="about__col"></div></div><div aria-label="Partneri" class="about-logos">
 <a aria-label="SAF Tehnika" class="about-logo partner about-logo--saf" href="https://saftehnika.com" rel="noopener noreferrer" target="_blank">
 <img alt="SAF Tehnika logo" class="partner__img" decoding="async" loading="lazy" src="images/partners/saf-logo.svg"/>
 </a>
@@ -249,7 +239,7 @@ html,body{background:#04112C}
 <a aria-label="Erica Synths" class="about-logo partner about-logo--erica" href="https://www.ericasynths.lv/" rel="noopener noreferrer" target="_blank">
 <img alt="Erica Synths logo" class="partner__img" decoding="async" loading="lazy" src="images/partners/erica-synths-logo.svg"/>
 </a>
-</div></div></section><section class="contact" id="sazinaties"><div class="wrap contact__wrap"><div class="contact__head contact__head--center"><h2 class="contact__title">Sazinies ar mums</h2><p class="contact__lead">Mēs palīdzam uzņēmumiem tikt pie gatava produkta – no idejas un rasējuma līdz precīzai formai un detaļai. Pastāsti, kā mēs varam palīdzēt tev!</p></div><div class="contact-box"><div class="contact-cards"><a class="contact-card" href="tel:+37129327257"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.06a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">TĀLRUNIS</span><span class="contact-card__value">+371 29327257</span></span></a><a class="contact-card" href="mailto:info@pluff.lv"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" ry="2" stroke="currentColor" stroke-width="2" width="20" x="2" y="4"></rect><path d="m22 7-10 7L2 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">E-PASTS</span><span class="contact-card__value">info@pluff.lv</span></span></a><a class="contact-card" href="https://www.google.com/maps/search/?api=1&amp;query=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">ADRESE</span><span class="contact-card__value">Ganību dambis 24 k-6, Rīga</span></span></a></div></div>
+</div></div></section><section class="contact sr" id="sazinaties"><div class="wrap contact__wrap"><div class="contact__head contact__head--center"><h2 class="contact__title">Sazinies ar mums</h2><p class="contact__lead">Mēs palīdzam uzņēmumiem tikt pie gatava produkta – no idejas un rasējuma līdz precīzai formai un detaļai. Pastāsti, kā mēs varam palīdzēt tev!</p></div><div class="contact-box"><div class="contact-cards"><a class="contact-card" href="tel:+37129327257"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.06a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">TĀLRUNIS</span><span class="contact-card__value">+371 29327257</span></span></a><a class="contact-card" href="mailto:info@pluff.lv"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" ry="2" stroke="currentColor" stroke-width="2" width="20" x="2" y="4"></rect><path d="m22 7-10 7L2 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">E-PASTS</span><span class="contact-card__value">info@pluff.lv</span></span></a><a class="contact-card" href="https://www.google.com/maps/search/?api=1&amp;query=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">ADRESE</span><span class="contact-card__value">Ganību dambis 24 k-6, Rīga</span></span></a></div></div>
 <div class="contact-map">
   <a class="contact-map__static"
      href="https://www.google.com/maps/search/?api=1&query=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga"
@@ -749,5 +739,21 @@ scheduleServicesAlign();
 })();
 </script>
 
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.sr');
+  if(!els.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('sr--on');
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
