@@ -4,7 +4,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<style>html,body{background:#04112C}</style>
+<style>
+html,body{background:#04112C}
+#pluff-loader{position:fixed;inset:0;z-index:9999;background:#04112C;display:flex;align-items:center;justify-content:center;transition:opacity .45s ease}
+#pluff-loader.out{opacity:0;pointer-events:none}
+#pluff-loader svg{width:64px;height:64px;animation:pluff-pulse 1.6s ease-in-out infinite}
+@keyframes pluff-pulse{0%,100%{opacity:.9;transform:scale(1)}50%{opacity:.3;transform:scale(.88)}}
+</style>
 <title>Pluff — Landing</title>
 <meta content="PLUFF palīdz uzņēmumiem pārvērst inženiertehniskas idejas augstvērtīgos plastmasas produktos — no analīzes un presformām līdz spiedienliešanai un CNC apstrādei." name="description"/>
 <link rel="alternate" hreflang="lv" href="/"/>
@@ -26,7 +32,21 @@
 <link rel="apple-touch-icon" href="images/logo/favicon-256.png">
 <link href="styles.css" rel="stylesheet">
 </link></head>
-<body><div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
+<body>
+<div id="pluff-loader" aria-hidden="true">
+<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.52682 0L0.138672 5.79951V39.2H32.9203C35.4152 36.9337 36.8136 35.6668 39.3085 33.4005V0H6.52682ZM12.6502 33.7935L9.23075 31.0464V16.8131L12.678 13.7106L22.4809 13.6562V14.0827L19.5912 16.7546L13.1566 16.809L13.2077 33.7894H12.6594L12.6502 33.7935ZM30.221 20.4885L26.7738 23.5911H16.7432V23.1646L19.633 20.4927H26.2952V11.298H12.6827V8.19541H26.7738L30.221 11.298V20.4927V20.4885Z" fill="white"/>
+</svg>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('pluff-loader');
+  function hide(){el.classList.add('out');setTimeout(function(){el.style.display='none'},500);}
+  if(document.readyState==='complete'){setTimeout(hide,200);}
+  else{window.addEventListener('load',function(){setTimeout(hide,200)});}
+})();
+</script>
+<div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
 <div aria-hidden="true" class="topbar-glow-clip"><div class="topbar-glow"></div></div>
 <header class="topbar" role="banner">
 <div class="wrap topbar__inner">
