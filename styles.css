@@ -2675,15 +2675,27 @@ a:hover{ text-decoration: none; }
    Sections below hero start invisible and fade in when they enter the viewport.
    JS adds .sr class via IntersectionObserver, then adds .sr--on to trigger reveal.
 ========================= */
-.sr {
+/* Hide-before-reveal is applied ONLY when JS confirms it can reveal again
+   (html.js is set synchronously in <head>). Without JS — or if the reveal
+   script never runs — sections stay fully visible instead of a blank page. */
+html.js .sr {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.55s ease, transform 0.55s ease;
   will-change: opacity, transform;
 }
-.sr--on {
+html.js .sr--on {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Respect reduced-motion: never hide content behind an animation. */
+@media (prefers-reduced-motion: reduce) {
+  html.js .sr {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Service card image shimmer — already working, keep as-is */

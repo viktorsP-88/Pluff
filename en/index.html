@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+<script>document.documentElement.className+=' js';</script>
 <style>
 html,body{background:#04112C}
 #pluff-loader{position:fixed;inset:0;z-index:9999;background:#04112C;display:flex;align-items:center;justify-content:center;transition:opacity .45s ease}
@@ -545,12 +546,16 @@ scheduleServicesAlign();
 
   const onScroll = () => {
     const center = window.innerHeight * 0.5;
-    let activeIndex = 0;
+    let activeIndex = -1;
 
     blocks.forEach((block, i) => {
       const r = block.getBoundingClientRect();
       if (r.top <= center && r.bottom >= center) activeIndex = i;
     });
+
+    // In the gaps between cards no block contains the viewport center —
+    // keep the current selection instead of flashing back to the first item.
+    if (activeIndex === -1) return;
 
     setActive(activeIndex);
   };
@@ -730,18 +735,51 @@ scheduleServicesAlign();
 
 
 <script>
+/* Section reveal — fail-safe.
+   Uses a plain scroll/getBoundingClientRect check (reliable on iOS Safari,
+   where IntersectionObserver can silently skip firing during momentum scroll,
+   leaving sections stuck at opacity:0 = a blank scrollable page). A hard
+   timeout guarantees nothing ever stays hidden even if scroll events don't fire. */
 (function(){
-  var els = document.querySelectorAll('.sr');
+  var els = Array.prototype.slice.call(document.querySelectorAll('.sr'));
   if(!els.length) return;
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('sr--on');
-        io.unobserve(e.target);
+
+  var revealAll = function(){
+    els.forEach(function(el){ el.classList.add('sr--on'); });
+    els = [];
+  };
+
+  // Reduced-motion or no requestAnimationFrame: just show everything.
+  if((window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+     !('requestAnimationFrame' in window)){
+    revealAll();
+    return;
+  }
+
+  var ticking = false;
+  var check = function(){
+    ticking = false;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    for(var i = els.length - 1; i >= 0; i--){
+      var r = els[i].getBoundingClientRect();
+      // Reveal once the section has entered the viewport (60px early, matching old rootMargin).
+      if(r.top < vh - 60 && r.bottom > 0){
+        els[i].classList.add('sr--on');
+        els.splice(i, 1);
       }
-    });
-  }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
-  els.forEach(function(el){ io.observe(el); });
+    }
+  };
+  var onScroll = function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(check); }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('load', check);
+  check();
+
+  // Absolute safety net: never leave content hidden.
+  setTimeout(revealAll, 3000);
 })();
 </script>
 </body>
