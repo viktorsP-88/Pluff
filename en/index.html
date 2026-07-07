@@ -46,12 +46,15 @@ html,body{background:#04112C}
   function hide(){if(done)return;done=true;el.classList.add('out');setTimeout(function(){el.style.display='none'},500);}
   function watchHero(){
     var img=document.querySelector('picture img');
-    if(!img){setTimeout(hide,3000);return;}
+    if(!img){setTimeout(hide,800);return;}
     if(img.complete&&img.naturalWidth>0){setTimeout(hide,150);}
     else{
       img.addEventListener('load',function(){setTimeout(hide,150)});
       img.addEventListener('error',function(){setTimeout(hide,150)});
-      setTimeout(hide,4000);
+      // Hard cap: the loader is cosmetic — on slow mobile connections the
+      // hero image can take seconds, and users saw a scrollable blank blue
+      // overlay. Never hold the page hostage for it.
+      setTimeout(hide,1500);
     }
   }
   if(document.readyState==='loading'){
@@ -134,7 +137,7 @@ html,body{background:#04112C}
 <picture class="hero__img">
 <source srcset="../images/hero/hero-bg.webp" type="image/webp"/>
 <source srcset="../images/hero/hero-bg.png" type="image/png"/>
-<img alt="" decoding="async" loading="eager" src="../images/hero/hero-bg.png"/>
+<img alt="" decoding="async" loading="eager" fetchpriority="high" src="../images/hero/hero-bg.png"/>
 </picture>
 <video class="hero__video" autoplay muted loop playsinline preload="metadata">
   <source src="../images/hero/PLUFF_hero_1.mp4" type="video/mp4">
@@ -685,9 +688,13 @@ scheduleServicesAlign();
     });
   };
 
-  discoverImages().then(urls => {
+  // Start probing only after the page has loaded — the parallel probe batch
+  // otherwise competes with the hero image/video for mobile bandwidth.
+  const startDiscovery = () => discoverImages().then(urls => {
     if (urls.length) buildCarousel(urls);
   });
+  if (document.readyState === 'complete') startDiscovery();
+  else window.addEventListener('load', startDiscovery, { once: true });
 })();
 </script>
 <script>
