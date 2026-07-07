@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+<html lang="lv">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<script>document.documentElement.className+=' js';</script>
+<style>
+html,body{background:#04112C}
+#pluff-loader{position:fixed;inset:0;z-index:9999;background:#04112C;display:flex;align-items:center;justify-content:center;transition:opacity .45s ease}
+#pluff-loader.out{opacity:0;pointer-events:none}
+#pluff-loader svg{width:64px;height:64px;animation:pluff-pulse 1.6s ease-in-out infinite}
+@keyframes pluff-pulse{0%,100%{opacity:.9;transform:scale(1)}50%{opacity:.3;transform:scale(.88)}}
+</style>
+<title>Pluff — Landing</title>
+<meta content="PLUFF palīdz uzņēmumiem pārvērst inženiertehniskas idejas augstvērtīgos plastmasas produktos — no analīzes un presformām līdz spiedienliešanai un CNC apstrādei." name="description"/>
+<link rel="alternate" hreflang="lv" href="/"/>
+<link rel="alternate" hreflang="en" href="/en/"/>
+
+<!-- Open Graph / Social -->
+<meta content="website" property="og:type"/>
+<meta content="PLUFF" property="og:title"/>
+<meta content="No idejas un rasējuma līdz precīzai formai un detaļai — konsultācijas, presformas, spiedienliešana un CNC." property="og:description"/>
+<meta content="https://viktorsp-88.github.io/Pluff/images/og/og-image.png" property="og:image"/>
+<meta content="PLUFF — augstas precizitātes ražošana" property="og:image:alt"/>
+<meta content="https://viktorsp-88.github.io/Pluff/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Oswald:wght@400&amp;family=Geist+Mono:wght@300&amp;display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
+<link rel="icon" type="image/x-icon" href="images/logo/favicon.ico">
+<link rel="apple-touch-icon" href="images/logo/favicon-256.png">
+<link href="styles.css" rel="stylesheet">
+</link></head>
+<body>
+<div id="pluff-loader" aria-hidden="true">
+<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.52682 0L0.138672 5.79951V39.2H32.9203C35.4152 36.9337 36.8136 35.6668 39.3085 33.4005V0H6.52682ZM12.6502 33.7935L9.23075 31.0464V16.8131L12.678 13.7106L22.4809 13.6562V14.0827L19.5912 16.7546L13.1566 16.809L13.2077 33.7894H12.6594L12.6502 33.7935ZM30.221 20.4885L26.7738 23.5911H16.7432V23.1646L19.633 20.4927H26.2952V11.298H12.6827V8.19541H26.7738L30.221 11.298V20.4927V20.4885Z" fill="white"/>
+</svg>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('pluff-loader');
+  var done=false;
+
+  function hide(){
+    if(done)return;done=true;
+    el.classList.add('out');
+    setTimeout(function(){el.style.display='none'},500);
+  }
+
+  function watchHero(){
+    var img=document.querySelector('picture img');
+    if(!img){setTimeout(hide,3000);return;}
+    if(img.complete&&img.naturalWidth>0){setTimeout(hide,150);}
+    else{
+      img.addEventListener('load',function(){setTimeout(hide,150)});
+      img.addEventListener('error',function(){setTimeout(hide,150)});
+      setTimeout(hide,4000);
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',watchHero);
+  } else {
+    watchHero();
+  }
+})();
+</script>
+<div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
+<div aria-hidden="true" class="topbar-glow-clip"><div class="topbar-glow"></div></div>
+<header class="topbar" role="banner">
+<div class="wrap topbar__inner">
+<div aria-label="Galvenā navigācija" class="navbox" role="navigation">
+<div class="navbox__content">
+<a aria-label="Sākums" class="brand" href="#top">
+<span aria-hidden="true" class="brand__mark">
+<img alt="" src="images/logo/logo-symbol.svg"/>
+</span>
+<span aria-hidden="true" class="brand__word">
+<img alt="PLUFF" src="images/logo/logo-wordmark.svg"/>
+</span>
+<span aria-hidden="true" class="brand__sep"></span>
+</a>
+<nav aria-label="Sadaļas" class="nav">
+<a class="nav__link" href="#services">Pakalpojumi</a>
+<a class="nav__link" href="#kapec-mes">Kāpēc mēs?</a>
+<a class="nav__link" href="#paveiktais">Paveiktais</a>
+<a class="nav__link" href="#par-mums">Par mums</a>
+</nav>
+<button aria-controls="mobileMenu" aria-expanded="false" aria-label="Atvērt izvēlni" class="burger" type="button">
+<svg aria-hidden="true" class="burger__svg burger__svg--menu" fill="none" height="22" viewbox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<svg aria-hidden="true" class="burger__svg burger__svg--close" fill="none" height="22" viewbox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="mobilemenu" hidden="" id="mobileMenu">
+<div aria-label="Mobilā izvēlne" class="mobilemenu__panel" role="dialog">
+<div class="mobilemenu__links">
+<a class="mobilemenu__link" href="#services">Pakalpojumi</a>
+<a class="mobilemenu__link" href="#kapec-mes">Kāpēc mēs?</a>
+<a class="mobilemenu__link" href="#paveiktais">Paveiktais</a>
+<a class="mobilemenu__link" href="#par-mums">Par mums</a>
+</div>
+<div class="mobilemenu__cta"><a class="cta" href="#sazinaties">Sazināties</a></div>
+<div class="lang-switch lang-switch--mobile" aria-label="Valodas izvēle">
+  <a class="lang-switch__btn is-active" href="index.html" lang="lv" aria-label="Latviešu" data-tooltip="Latviešu">
+    <img class="lang-switch__flag" src="images/flags/lv.svg" alt="LV">
+  </a>
+  <a class="lang-switch__btn" href="en/index.html" lang="en" aria-label="English" data-tooltip="English">
+    <img class="lang-switch__flag" src="images/flags/en.svg" alt="EN">
+  </a>
+</div>
+</div>
+</div>
+<div class="topbar-actions">
+<div class="lang-switch lang-switch--desktop" aria-label="Valodas izvēle">
+  <a class="lang-switch__btn is-active" href="index.html" lang="lv" aria-label="Latviešu" data-tooltip="Latviešu">
+    <img class="lang-switch__flag" src="images/flags/lv.svg" alt="LV">
+  </a>
+  <a class="lang-switch__btn" href="en/index.html" lang="en" aria-label="English" data-tooltip="English">
+    <img class="lang-switch__flag" src="images/flags/en.svg" alt="EN">
+  </a>
+</div>
+<a class="cta" href="#sazinaties">Sazināties</a>
+</div>
+</div>
+<!-- Progressive blur ONLY — immediately under nav + button -->
+<div aria-hidden="true" class="nav-progressive-blur"><i></i></div>
+</header>
+<main>
+<section aria-label="Hero" class="hero" id="hero">
+<div class="wrap hero__frame">
+<div class="hero__media-wrap">
+<div aria-hidden="true" class="hero__overlay"></div>
+<picture class="hero__img">
+<source srcset="images/hero/hero-bg.webp" type="image/webp"/>
+<source srcset="images/hero/hero-bg.png" type="image/png"/>
+<img alt="" decoding="async" loading="eager" src="images/hero/hero-bg.png"/>
+</picture>
+<video class="hero__video" autoplay muted loop playsinline preload="metadata">
+  <source src="images/hero/PLUFF_hero_1.mp4" type="video/mp4">
+</video>
+<!-- Hero text is part of the hero media frame (image + overlays). Padding is measured from this frame. -->
+<div class="hero__content">
+<h1 class="hero__title">NO KONCEPTA LĪDZ GATAVAM PRODUKTAM</h1>
+<p class="hero__lead">
+            Mēs palīdzam uzņēmumiem pārvērst inženiertehniskas idejas augstvērtīgos plastmasas produktos –
+            precīzi, pārdomāti un ilgtspējīgi.
+          </p>
+</div>
+</div>
+</div>
+</section><section aria-label="Pakalpojumi" class="services sr" id="services">
+<div class="wrap services__wrap">
+<div class="services__grid">
+<div class="services__left">
+<div class="services__kicker">
+<span aria-hidden="true" class="services__dot"></span>
+<span class="services__kicker-text t-note">Pakalpojumi</span>
+</div>
+<h2 class="services__title">Nodrošinām ātru un precīzu izpildi katrā solī.</h2>
+<p class="services__lead">
+          No formu projektēšanas un inženiertehniskās analīzes līdz plastmasas spiedienliešanai un CNC apstrādei.
+        </p>
+<ul class="services__list" role="list">
+<li class="services__item active" data-target="service-1">
+<button class="services__btn t-note" type="button">Konsultācijas un inženiertehniskā analīze</button>
+</li>
+<li class="services__item" data-target="service-2">
+<button class="services__btn t-note" type="button">Formu izstrāde un ražošana</button>
+</li>
+<li class="services__item" data-target="service-3">
+<button class="services__btn t-note" type="button">Plastmasas spiedienliešana</button>
+</li>
+<li class="services__item" data-target="service-4">
+<button class="services__btn t-note" type="button">Papildus CNC frēzēšana</button>
+</li>
+</ul>
+</div>
+<div aria-label="Pakalpojumu attēli" class="services__right">
+<article class="service-block" id="service-1"><div class="service-card"><div class="service-card__media" data-alt="Konsultācijas un inženiertehniskā analīze" data-base="service-1"></div><div aria-hidden="true" class="service-card__overlay"></div><div class="service-card__content"><h3 class="service-card__title">Konsultācijas un inženiertehniskā analīze</h3><p class="service-card__text">Palīdzam izvērtēt risinājumu, optimizēt konstrukciju un sagatavot ražošanai ar pārbaudāmu kvalitāti.</p></div></div></article>
+<article class="service-block" id="service-2"><div class="service-card"><div class="service-card__media" data-alt="Formu izstrāde un ražošana" data-base="service-2"></div><div aria-hidden="true" class="service-card__overlay"></div><div class="service-card__content"><h3 class="service-card__title">Formu izstrāde un ražošana</h3><p class="service-card__text">Projektējam un izgatavojam presformas, nodrošinot precizitāti, ilgmūžību un stabilu ciklu ražošanā.</p></div></div></article>
+<article class="service-block" id="service-3"><div class="service-card"><div class="service-card__media" data-alt="Plastmasas spiedienliešana" data-base="service-3"></div><div aria-hidden="true" class="service-card__overlay"></div><div class="service-card__content"><h3 class="service-card__title">Plastmasas spiedienliešana</h3><p class="service-card__text">Ražojam precīzas plastmasas detaļas dažādiem pielietojumiem un nozarēm, nodrošinot augstu kvalitāti un atkārtojamību.</p></div></div></article>
+<article class="service-block" id="service-4"><div class="service-card"><div class="service-card__media" data-alt="Papildus CNC frēzēšana" data-base="service-4"></div><div aria-hidden="true" class="service-card__overlay"></div><div class="service-card__content"><h3 class="service-card__title">Papildus CNC frēzēšana</h3><p class="service-card__text">Veicam CNC apstrādi prototipiem un detaļām, lai ātri iegūtu precīzu ģeometriju un labu virsmas kvalitāti.</p></div></div></article>
+</div>
+</div>
+</div>
+</section><section aria-label="Kāpēc izvēlēties mūs" class="whyus sr" id="kapec-mes"><div class="wrap whyus__wrap"><div class="whyus__head"><h2 class="whyus__title">Kāpēc izvēlēties PLUFF?</h2><p class="whyus__lead">Apvienojam pieredzi, rūpību un atklātu komunikāciju. Katram projektam pieejam kā partneri – meklējot optimālāko risinājumu, nevis ātrāko kompromisu.</p></div><div class="whyus__grid" role="list"><article class="whyus-item" role="listitem"><svg aria-hidden="true" class="whyus-item__icon" focusable="false" height="52" viewbox="0 0 24 24" width="52">
+<g stroke="rgb(var(--c-accent) / 0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none">
+<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+</g>
+</svg><h3 class="whyus-item__title">Augstas precizitātes ražošana</h3></article><article class="whyus-item" role="listitem"><svg aria-hidden="true" class="whyus-item__icon" focusable="false" height="52" viewbox="0 0 24 24" width="52">
+<g stroke="rgb(var(--c-accent) / 0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none">
+<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>
+</g>
+</svg><h3 class="whyus-item__title">Mūsdienīga ražotne un tehnoloģijas</h3></article><article class="whyus-item" role="listitem"><svg aria-hidden="true" class="whyus-item__icon" focusable="false" height="52" viewbox="0 0 24 24" width="52">
+<g stroke="rgb(var(--c-accent) / 0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none">
+<line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/>
+</g>
+</svg><h3 class="whyus-item__title">Elastība un individuāla pieeja</h3></article><article class="whyus-item" role="listitem"><svg aria-hidden="true" class="whyus-item__icon" focusable="false" height="52" viewbox="0 0 24 24" width="52">
+<g stroke="rgb(var(--c-accent) / 0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none">
+<path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a8 8 0 0 1 16 0v3"/>
+</g>
+</svg><h3 class="whyus-item__title">Inženiertehniskā kompetence</h3></article></div></div></section><section class="section section--paveiktais sr" id="paveiktais"><div class="wrap paveiktais__wrap"><div class="paveiktais__head paveiktais__head--center"><h2 class="paveiktais__title">Paveiktais</h2><p class="paveiktais__lead"></p></div><div class="paveiktais-carousel" data-carousel="paveiktais" data-gallery-base="images/gallery/" data-gallery-label-prefix="Attēls">
+<div class="paveiktais-carousel__viewport">
+<div class="paveiktais-carousel__track"></div>
+</div>
+<div class="paveiktais-carousel__hud-wrap">
+<div class="paveiktais-carousel__hud">
+<div aria-label="Galerijas lapotājs" class="paveiktais-carousel__dots" role="tablist">
+</div>
+<div class="paveiktais-carousel__arrows">
+<button aria-label="Iepriekšējais" class="paveiktais-carousel__btn paveiktais-carousel__btn--prev" type="button">
+<svg fill="none" height="18" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button aria-label="Nākamais" class="paveiktais-carousel__btn paveiktais-carousel__btn--next" type="button">
+<svg fill="none" height="18" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</div></div></section><section class="about sr" id="par-mums"><div class="wrap about__wrap"><div class="about__head"><h2 class="about__title">Par mums</h2><p class="about__lead">PLUFF ir mūsdienīgs uzņēmums, kas specializējas augstas precizitātes plastmasas formu un detaļu ražošanā. Tas savu darbību uzsāka 2025.gadā. SIA PLUFF dibinājuši A/S “SAF Tehnika”, A/S “HansaMatrix”, Latvijas Elektronikas un elektronikas rūpniecības asociācija, SIA “Company NA”, un SIA “Erica Synths”.</p></div><div class="about__grid"><div class="about__col"></div></div><div aria-label="Partneri" class="about-logos">
+<a aria-label="SAF Tehnika" class="about-logo partner about-logo--saf" href="https://saftehnika.com" rel="noopener noreferrer" target="_blank">
+<img alt="SAF Tehnika logo" class="partner__img" decoding="async" loading="lazy" src="images/partners/saf-logo.svg"/>
+</a>
+<a aria-label="Hansa Matrix" class="about-logo partner about-logo--hansa" href="https://hansamatrix.com/" rel="noopener noreferrer" target="_blank">
+<img alt="Hansa Matrix logo" class="partner__img" decoding="async" loading="lazy" src="images/partners/HansaMatrix-logo.svg"/>
+</a>
+<a aria-label="Letera" class="about-logo partner about-logo--letera" href="https://www.letera.lv/" rel="noopener noreferrer" target="_blank">
+<img alt="Letera logo" class="partner__img" decoding="async" loading="lazy" src="images/partners/Letera-logo.svg"/>
+</a>
+<a aria-label="NA Company" class="about-logo partner about-logo--na" href="https://na.lv/" rel="noopener noreferrer" target="_blank">
+<img alt="NA Company logo" class="partner__img" decoding="async" loading="lazy" src="images/partners/NA-Sound-Light-logo.svg"/>
+</a>
+<a aria-label="Erica Synths" class="about-logo partner about-logo--erica" href="https://www.ericasynths.lv/" rel="noopener noreferrer" target="_blank">
+<img alt="Erica Synths logo" class="partner__img" decoding="async" loading="lazy" src="images/partners/erica-synths-logo.svg"/>
+</a>
+</div></div></section><section class="contact sr" id="sazinaties"><div class="wrap contact__wrap"><div class="contact__head contact__head--center"><h2 class="contact__title">Sazinies ar mums</h2><p class="contact__lead">Mēs palīdzam uzņēmumiem tikt pie gatava produkta – no idejas un rasējuma līdz precīzai formai un detaļai. Pastāsti, kā mēs varam palīdzēt tev!</p></div><div class="contact-box"><div class="contact-cards"><a class="contact-card" href="tel:+37129327257"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.06a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">TĀLRUNIS</span><span class="contact-card__value">+371 29327257</span></span></a><a class="contact-card" href="mailto:info@pluff.lv"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" ry="2" stroke="currentColor" stroke-width="2" width="20" x="2" y="4"></rect><path d="m22 7-10 7L2 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">E-PASTS</span><span class="contact-card__value">info@pluff.lv</span></span></a><a class="contact-card" href="https://www.google.com/maps/search/?api=1&amp;query=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">ADRESE</span><span class="contact-card__value">Ganību dambis 24 k-6, Rīga</span></span></a></div></div>
+<div class="contact-map">
+  <a class="contact-map__static"
+     href="https://www.google.com/maps/search/?api=1&query=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Open Google Maps">
+    <img class="contact-map__img"
+         src="images/map/map-screenshot.jpg"
+         alt="PLUFF location map">
+  </a>
+  <div class="contact-map__nav">
+    <a class="cta cta--light contact-map__btn" href="https://www.google.com/maps/search/?api=1&query=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga" target="_blank" rel="noopener noreferrer">
+      <svg class="contact-map__btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M12.2148 2.5C14.1282 2.50008 15.9634 3.26032 17.3164 4.61328C18.6693 5.96627 19.4297 7.80149 19.4297 9.71484C19.4295 12.8295 15.0218 19.0092 13.0967 21.5605C12.9937 21.697 12.8601 21.8075 12.707 21.8838C12.5541 21.9599 12.3857 22 12.2148 22C12.0438 22 11.8748 21.9601 11.7217 21.8838C11.5687 21.8075 11.435 21.697 11.332 21.5605C9.40687 19.0091 5.00017 12.8295 5 9.71484C5.00003 7.80141 5.76028 5.96629 7.11328 4.61328C8.46629 3.26028 10.3014 2.50003 12.2148 2.5ZM14.0518 5.2793C13.1746 4.91598 12.2095 4.82069 11.2783 5.00586C10.347 5.19111 9.49078 5.64789 8.81934 6.31934C8.14789 6.99078 7.69111 7.84699 7.50586 8.77832C7.32069 9.70953 7.41598 10.6746 7.7793 11.5518C8.14266 12.429 8.75739 13.1795 9.54688 13.707C10.3364 14.2346 11.2653 14.5156 12.2148 14.5156C13.4881 14.5156 14.709 14.0097 15.6094 13.1094C16.5097 12.209 17.0156 10.9881 17.0156 9.71484C17.0156 8.76527 16.7346 7.83642 16.207 7.04688C15.6795 6.25739 14.929 5.64266 14.0518 5.2793ZM12.2148 7.28906C13.5546 7.28915 14.6406 8.37511 14.6406 9.71484C14.6405 11.0545 13.5545 12.1405 12.2148 12.1406C10.8751 12.1406 9.78915 11.0546 9.78906 9.71484C9.78906 8.37505 10.8751 7.28906 12.2148 7.28906Z" fill="currentColor"/></svg>
+      <span class="cta__label">Google Maps</span>
+    </a>
+    <a class="cta cta--light contact-map__btn" href="https://waze.com/ul?q=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga&navigate=yes" target="_blank" rel="noopener noreferrer">
+      <svg class="contact-map__btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"><path d="M13.3691 1.75L13.8398 1.7627C16.0307 1.87386 18.1206 2.7119 19.7529 4.13379L20.0957 4.44727V4.44824C21.8927 6.19051 22.8817 8.51107 22.8818 10.9814L22.8721 11.4414C22.7607 13.7374 21.7643 15.9112 20.0645 17.5312L20.0635 17.5332C19.6132 17.9563 19.1228 18.34 18.6133 18.6748C19.0408 20.027 18.363 21.6038 16.876 22.0869L16.875 22.0859C15.1933 22.6431 13.5925 21.7083 13.1865 20.2578H11.4219C11.0852 21.4096 10.009 22.2441 8.70605 22.2441C7.86986 22.2441 7.07121 21.8865 6.53418 21.2617V21.2607C6.03227 20.6843 5.80332 19.9374 5.8877 19.1953C5.03525 18.7667 4.2359 18.2196 3.55176 17.5352V17.5342C3.02831 17.0262 2.57227 16.452 2.25098 15.9121C1.94056 15.3905 1.73165 14.859 1.75293 14.4395H1.75195C1.75195 14.0159 2.12081 13.7815 2.45312 13.7529H2.45996L2.63281 13.7354C3.0217 13.6801 3.30412 13.5253 3.49414 13.3281C3.71223 13.1017 3.82422 12.8034 3.82422 12.4883V11.0469C3.82433 8.95968 4.52659 6.9383 5.87012 5.29883L6.04785 5.08887C7.90519 2.94962 10.5468 1.75 13.3682 1.75H13.3691ZM13.3604 3.24707C10.8751 3.24713 8.57525 4.3348 7.02441 6.26172L7.02344 6.2627C5.93449 7.6 5.35254 9.28398 5.35254 10.9893V12.4814C5.35249 13.161 5.09623 13.8425 4.59766 14.3506L4.59863 14.3516C4.29558 14.6644 3.93483 14.9007 3.53125 15.041C3.72778 15.4113 4.08498 15.9138 4.65332 16.4648L4.65625 16.4688C5.1866 17.0022 5.8015 17.4628 6.46484 17.8115C6.98581 17.1589 7.80178 16.7295 8.72852 16.7295C10.0105 16.7295 11.1124 17.5842 11.4453 18.7383H13.3604C15.4885 18.7383 17.5203 17.9184 19.0195 16.4648C20.5259 14.9971 21.3535 13.0529 21.3535 10.9893C21.3535 8.92511 20.5334 6.98085 19.0205 5.51367L18.7305 5.24707C17.2542 3.95485 15.3627 3.24707 13.3604 3.24707ZM17.6699 11.7217C18.2385 11.7218 18.5978 12.2856 18.3701 12.7822L18.3682 12.7861C17.6658 14.2409 16.1667 15.2275 14.4043 15.2275C12.64 15.2275 11.1431 14.2179 10.4414 12.7881L10.4375 12.7803C10.2094 12.2717 10.5913 11.7217 11.1387 11.7217C11.4287 11.7218 11.7112 11.8995 11.8359 12.1523V12.1533C12.2902 13.0806 13.27 13.7304 14.3965 13.7305C15.5399 13.7305 16.5257 13.079 16.9717 12.1543C17.1025 11.8805 17.3543 11.7217 17.6475 11.7217H17.6699ZM11.2959 7.74805C11.9909 7.74805 12.5674 8.29781 12.5674 8.99512C12.5672 9.68616 11.9896 10.2344 11.2959 10.2344C10.6047 10.2343 10.0178 9.68845 10.0176 8.99512C10.0176 8.30513 10.5935 7.74813 11.2959 7.74805ZM17.4893 7.74805C18.1842 7.74805 18.7607 8.29781 18.7607 8.99512C18.7606 9.68616 18.1829 10.2344 17.4893 10.2344C16.7982 10.2342 16.2111 9.68837 16.2109 8.99512C16.2109 8.3052 16.7869 7.74824 17.4893 7.74805Z" fill="currentColor" stroke="currentColor" stroke-width="0.5"/></svg>
+      <span class="cta__label">Waze</span>
+    </a>
+  </div>
+</div>
+</section>
+</main>
+<footer class="footer" role="contentinfo">
+<div class="wrap footer__wrap">
+<p class="footer__copy">© 2026 PLUFF. Visas tiesības aizsargātas.</p>
+<a aria-label="PLUFF LinkedIn" class="footer__social" href="https://www.linkedin.com/company/sia-pluff/" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true">in</span>
+</a>
+</div>
+</footer>
+<script>
+(() => {
+  const topbar = document.querySelector('.topbar');
+  if (!topbar) return;
+
+  const mqMobile = window.matchMedia('(max-width: 780px)');
+
+  // Lock to prevent "double bounce" during programmatic smooth-scroll.
+  // Exposed for other modules: window.__pluffTopbarLock(compact:boolean) / __pluffTopbarUnlock()
+  let locked = false;
+  let lockedCompact = false;
+
+  window.__pluffTopbarLock = (compact) => {
+    locked = true;
+    lockedCompact = !!compact;
+    topbar.classList.toggle('topbar--compact', lockedCompact);
+  };
+
+  window.__pluffTopbarUnlock = () => {
+    locked = false;
+  };
+
+  const onScroll = () => {
+    if (locked) {
+      topbar.classList.toggle('topbar--compact', lockedCompact);
+      return;
+    }
+    const y = window.scrollY || 0;
+    // Wordmark compact animation should also work on mobile, but without changing nav height.
+    topbar.classList.toggle('topbar--compact', y > 8);
+  };
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  mqMobile.addEventListener?.('change', onScroll);
+})();
+</script>
+<script>
+(() => {
+  const header = document.querySelector('.topbar');
+  const brand = document.querySelector('a.brand');
+  const navLinks = Array.from(document.querySelectorAll('a.nav__link, a.cta, .mobilemenu a[href^="#"]'));
+  const items = Array.from(document.querySelectorAll('.services__item'));
+  const blocks = Array.from(document.querySelectorAll('.service-block'));
+
+  // Smooth scrolling for in-page anchors with fixed header offset via scroll-margin-top
+  const isHashLink = (a) => a && a.getAttribute('href') && a.getAttribute('href').startsWith('#') && a.getAttribute('href').length > 1;
+
+  
+  const closeMobileMenuIfOpen = () => {
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.querySelector('.burger');
+    if (!header || !menu || !burger) return;
+    if (!header.classList.contains('is-menu-open')) return;
+    // mirror closeMenu() behavior from the mobile-menu module
+    menu.hidden = true;
+    header.classList.remove('is-menu-open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.removeProperty('--mobile-nav-h');
+  };
+
+const lockTopbar = (compact) => {
+    if (typeof window.__pluffTopbarLock === 'function') window.__pluffTopbarLock(!!compact);
+  };
+  const unlockTopbar = () => {
+    if (typeof window.__pluffTopbarUnlock === 'function') window.__pluffTopbarUnlock();
+  };
+
+  // Unlock once smooth-scroll settles near the target (prevents compact toggling mid-animation).
+  const unlockWhenSettled = (targetY) => {
+    let stable = 0;
+    const tick = () => {
+      const y = window.scrollY || 0;
+      if (Math.abs(y - targetY) <= 2) stable += 1;
+      else stable = 0;
+
+      if (stable >= 4) {
+        unlockTopbar();
+        return;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    // hard fallback unlock
+    setTimeout(unlockTopbar, 1200);
+  };
+
+navLinks.filter(isHashLink).forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+            closeMobileMenuIfOpen();
+      const headerH = header ? header.getBoundingClientRect().height : 0;
+      const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--anchor-nav-gap')) || 32;
+      const padTop = parseFloat(getComputedStyle(el).paddingTop) || 0;
+      const targetTop = el.getBoundingClientRect().top + window.scrollY + padTop - headerH - gap;
+      // wait a frame so layout/overflow updates before scrolling
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      });});
+  });
+
+  // Logo -> top (reset compact state first, then scroll)
+  if (brand) {
+    brand.addEventListener('click', (e) => {
+      const hero = document.getElementById('hero');
+      if (!hero) return;
+      e.preventDefault();
+      lockTopbar(false);
+      // ensure layout updates before scrolling
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        unlockWhenSettled(0);
+      });
+    });
+  }
+
+  if (!items.length || !blocks.length) return;
+
+
+// Align the first service card bottom edge with the bottom divider of the left nav list
+// (so the right column starts slightly lower on large screens).
+const servicesGrid = document.querySelector('.services__grid');
+const servicesRight = document.querySelector('.services__right');
+const servicesList = document.querySelector('.services__list');
+
+const setServicesRightOffset = () => {
+  if (!servicesGrid || !servicesRight || !servicesList) return;
+
+  // Only in 2-column services layout (desktop).
+  if (window.matchMedia('(max-width: 1100px)').matches) {
+    servicesRight.style.setProperty('--services-right-offset', '0px');
+    return;
+  }
+
+  const firstBlock = document.getElementById('service-1');
+  if (!firstBlock) return;
+
+  const leftCol = servicesGrid.querySelector('.services__left');
+  if (!leftCol) return;
+
+  // Center the first card vertically against the left column content.
+  // Heights only — positions of the sticky left column change with scroll
+  // state and made earlier position-based formulas drift.
+  const leftH = leftCol.getBoundingClientRect().height;
+  const cardH = firstBlock.getBoundingClientRect().height;
+  // -8 compensates the column's 8px base padding so the gaps are symmetric.
+  const offset = Math.max(0, Math.round((leftH - cardH) / 2 - 8));
+  servicesRight.style.setProperty('--services-right-offset', `${offset}px`);
+};
+
+const scheduleServicesAlign = () => {
+  requestAnimationFrame(setServicesRightOffset);
+  setTimeout(setServicesRightOffset, 150);
+  setTimeout(setServicesRightOffset, 600);
+};
+
+let _srvT = null;
+window.addEventListener('resize', () => {
+  clearTimeout(_srvT);
+  _srvT = setTimeout(scheduleServicesAlign, 120);
+}, { passive: true });
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(scheduleServicesAlign).catch(() => {});
+}
+
+scheduleServicesAlign();
+
+
+  // Resolve service media — lazy: only probe when card scrolls into view
+  const mediaExts = ['.webp','.png','.jpg','.jpeg','.gif','.svg','.mp4','.webm'];
+  const mediaNodes = Array.from(document.querySelectorAll('.service-card__media[data-base]'));
+
+  const tryImage = (url) => new Promise((resolve, reject) => {
+    const im = new Image();
+    im.onload = () => resolve({ type: 'img', url });
+    im.onerror = () => reject(new Error('img fail'));
+    im.src = url;
+  });
+
+  const tryVideo = (url) => new Promise((resolve, reject) => {
+    const v = document.createElement('video');
+    v.muted = true;
+    v.playsInline = true;
+    v.preload = 'metadata';
+    v.onloadeddata = () => resolve({ type: 'video', url });
+    v.onerror = () => reject(new Error('video fail'));
+    v.src = url;
+  });
+
+  const resolveMedia = async (baseName) => {
+    const dirs = ['images/services'];
+    for (const dir of dirs) {
+      for (const ext of mediaExts) {
+        const url = `${dir}/${baseName}${ext}`;
+        if (ext === '.mp4' || ext === '.webm') {
+          try { return await tryVideo(url); } catch(e) {}
+        } else {
+          try { return await tryImage(url); } catch(e) {}
+        }
+      }
+    }
+    return null;
+  };
+
+  const loadServiceMedia = async (node) => {
+    const baseName = node.getAttribute('data-base');
+    const alt = node.getAttribute('data-alt') || '';
+    const res = await resolveMedia(baseName);
+    if (!res) {
+      node.classList.add("service-card__media--placeholder");
+      node.setAttribute("role","img");
+      node.setAttribute("aria-label", alt);
+      return;
+    }
+
+    if (res.type === 'video') {
+      const v = document.createElement('video');
+      v.src = res.url;
+      v.autoplay = true;
+      v.loop = true;
+      v.muted = true;
+      v.playsInline = true;
+      v.setAttribute('aria-label', alt);
+      v.className = 'service-card__video';
+      node.replaceWith(v);
+      scheduleServicesAlign();
+    } else {
+      const im = document.createElement('img');
+      im.src = res.url;
+      im.alt = alt;
+      im.className = 'service-card__img';
+      node.replaceWith(im);
+      scheduleServicesAlign();
+    }
+  };
+
+  // Lazy-load service images with IntersectionObserver (load when ~200px before entering viewport)
+  const svcObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      svcObserver.unobserve(entry.target);
+      loadServiceMedia(entry.target);
+    });
+  }, { rootMargin: '200px 0px' });
+
+  mediaNodes.forEach(node => svcObserver.observe(node));
+
+
+  // click -> scroll to the corresponding block (stable, no extra post-scroll nudge)
+  const getServicesOffset = () => {
+    const h = header ? header.getBoundingClientRect().height : 0;
+    const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--services-nav-gap')) || 32;
+    return h + gap;
+  };
+
+  items.forEach((li) => {
+    const btn = li.querySelector('.services__btn');
+    btn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const id = li.getAttribute('data-target');
+      const el = id ? document.getElementById(id) : null;
+      if (!el) return;
+
+      // Land the card vertically centered against the sticky left panel
+      // (stuck at getServicesOffset() from the viewport top), instead of at
+      // the viewport top — the top-landing read as "jumped to the next one".
+      const r = el.getBoundingClientRect();
+      const leftPanel = document.querySelector('.services__left');
+      const panelH = leftPanel ? leftPanel.getBoundingClientRect().height : 0;
+      const top = r.top + window.scrollY + r.height / 2 - (getServicesOffset() + panelH / 2);
+      window.scrollTo({ top, behavior: 'smooth' });
+
+      // Prevent focus scroll-jitter on some browsers
+      btn.blur();
+    });
+  });
+
+  // active state by viewport center
+  const setActive = (idx) => {
+    items.forEach((it) => it.classList.remove('active'));
+    if (items[idx]) items[idx].classList.add('active');
+  };
+
+  const onScroll = () => {
+    const center = window.innerHeight * 0.5;
+    let activeIndex = -1;
+
+    blocks.forEach((block, i) => {
+      const r = block.getBoundingClientRect();
+      if (r.top <= center && r.bottom >= center) activeIndex = i;
+    });
+
+    // In the gaps between cards no block contains the viewport center —
+    // keep the current selection instead of flashing back to the first item.
+    if (activeIndex === -1) return;
+
+    setActive(activeIndex);
+  };
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+</script>
+<script>
+/* PAVEIKTAIS CAROUSEL — dynamic gallery from folder (probe work-N.ext until 404) */
+(function(){
+  const root = document.querySelector('[data-carousel="paveiktais"]');
+  if (!root) return;
+
+  const galleryBase  = root.dataset.galleryBase  || 'images/gallery/';
+  const labelPrefix  = root.dataset.galleryLabelPrefix || 'Image';
+  const exts = ['.webp', '.png', '.jpg', '.jpeg'];
+
+  const probeImage = (url) => new Promise((res, rej) => {
+    const im = new Image();
+    im.onload  = () => res(url);
+    im.onerror = rej;
+    im.src = url;
+  });
+
+  // Probe one index: try extensions in order, resolve to url or null.
+  const probeIndex = async (i) => {
+    for (const ext of exts) {
+      try { return await probeImage(`${galleryBase}work-${i}${ext}`); } catch(e) {}
+    }
+    return null;
+  };
+
+  // Probe indexes in parallel batches instead of one-by-one — sequential
+  // full-image probing left the carousel blank for many seconds on mobile.
+  const discoverImages = async () => {
+    const urls = [];
+    const BATCH = 12;
+    let start = 1;
+    while (true) {
+      const batch = await Promise.all(
+        Array.from({ length: BATCH }, (_, k) => probeIndex(start + k))
+      );
+      for (const url of batch) {
+        if (!url) return urls;
+        urls.push(url);
+      }
+      start += BATCH;
+    }
+  };
+
+  const buildCarousel = (urls) => {
+    const track    = root.querySelector('.paveiktais-carousel__track');
+    const dotsWrap = root.querySelector('.paveiktais-carousel__dots');
+    const btnPrev  = root.querySelector('.paveiktais-carousel__btn--prev');
+    const btnNext  = root.querySelector('.paveiktais-carousel__btn--next');
+    const hud      = root.querySelector('.paveiktais-carousel__hud');
+
+    // Build slides
+    track.innerHTML = urls.map(url => `
+      <div class="paveiktais-carousel__slide">
+        <div class="paveiktais-carousel__media">
+          <img alt="" decoding="async" loading="lazy" src="${url}"/>
+        </div>
+      </div>`).join('');
+
+    // Build dots
+    dotsWrap.innerHTML = urls.map((_, i) => `
+      <button aria-label="${labelPrefix} ${i+1}" class="paveiktais-carousel__dot${i===0?' is-active':''}" data-index="${i}" type="button"></button>`).join('');
+
+    const slides = Array.from(track.querySelectorAll('.paveiktais-carousel__slide'));
+    const dots   = Array.from(dotsWrap.querySelectorAll('.paveiktais-carousel__dot'));
+
+    let index = 0;
+    const clamp = (n) => (n + slides.length) % slides.length;
+
+    const setActive = (i) => {
+      index = clamp(i);
+      const slide    = slides[index];
+      const viewport = root.querySelector('.paveiktais-carousel__viewport');
+      const cs       = window.getComputedStyle(viewport);
+      const padL     = parseFloat(cs.paddingLeft)  || 0;
+      const padR     = parseFloat(cs.paddingRight) || 0;
+      const visibleW = viewport.clientWidth - padL - padR;
+      const left     = slide.offsetLeft + (slide.offsetWidth / 2) - visibleW / 2;
+      track.style.transform = `translate3d(${-left}px, 0, 0)`;
+
+      dots.forEach((d, di) => d.classList.toggle('is-active', di === index));
+      slides.forEach((s, si) => s.classList.toggle('is-active', si === index));
+
+      if (hud) {
+        const media = slide.querySelector('.paveiktais-carousel__media');
+        if (media) {
+          const mr = media.getBoundingClientRect();
+          const rr = root.getBoundingClientRect();
+          root.style.setProperty('--paveiktais-hud-w', `${Math.round(mr.width)}px`);
+          root.style.setProperty('--paveiktais-hud-x', `${Math.round(mr.left - rr.left)}px`);
+        }
+      }
+    };
+
+    // init without animation
+    track.classList.add('is-no-anim');
+    setActive(0);
+    requestAnimationFrame(() => requestAnimationFrame(() => track.classList.remove('is-no-anim')));
+
+    btnPrev && btnPrev.addEventListener('click', () => setActive(index - 1));
+    btnNext && btnNext.addEventListener('click', () => setActive(index + 1));
+    dots.forEach(d => d.addEventListener('click', () => setActive(parseInt(d.dataset.index, 10))));
+    window.addEventListener('resize', () => setActive(index));
+
+    let startX = null;
+    root.querySelector('.paveiktais-carousel__viewport').addEventListener('pointerdown', e => { startX = e.clientX; });
+    root.querySelector('.paveiktais-carousel__viewport').addEventListener('pointerup',   e => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) < 40) return;
+      setActive(dx < 0 ? index + 1 : index - 1);
+    });
+  };
+
+  discoverImages().then(urls => {
+    if (urls.length) buildCarousel(urls);
+  });
+})();
+</script>
+<script>
+// Mobile menu toggle (<= 780px)
+(() => {
+  const header = document.querySelector('.topbar');
+  const btn = document.querySelector('.burger');
+  const menu = document.getElementById('mobileMenu');
+  if (!header || !btn || !menu) return;
+
+  const openMenu = () => {
+    menu.hidden = false;
+    header.classList.add('is-menu-open');
+    // store header height so the menu starts right under the nav
+    const h = header.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--mobile-nav-h', `${Math.round(h)}px`);
+    btn.setAttribute('aria-expanded', 'true');
+    // prevent background scroll on mobile
+    document.documentElement.style.overflow = 'hidden';
+  };
+
+  const closeMenu = () => {
+    menu.hidden = true;
+    header.classList.remove('is-menu-open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.removeProperty('--mobile-nav-h');
+  };
+
+  const toggle = () => {
+    const isOpen = header.classList.contains('is-menu-open');
+    isOpen ? closeMenu() : openMenu();
+  };
+
+  btn.addEventListener('click', toggle);
+
+  // close on link click
+  menu.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', () => closeMenu());
+  });
+
+  // close on ESC
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && header.classList.contains('is-menu-open')) closeMenu();
+  });
+
+  // close if resized to desktop
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 781px)').matches) closeMenu();
+  });
+})();
+</script>
+
+<script>
+// Hero video: show only after it can play (fallback image stays until then)
+(function(){
+  var v = document.querySelector('.hero__video');
+  if (!v) return;
+  v.addEventListener('canplay', function(){ v.classList.add('is-ready'); }, { once: true });
+})();
+</script>
+
+
+<script>
+/* Section reveal — fail-safe.
+   Uses a plain scroll/getBoundingClientRect check (reliable on iOS Safari,
+   where IntersectionObserver can silently skip firing during momentum scroll,
+   leaving sections stuck at opacity:0 = a blank scrollable page). A hard
+   timeout guarantees nothing ever stays hidden even if scroll events don't fire. */
+(function(){
+  var els = Array.prototype.slice.call(document.querySelectorAll('.sr'));
+  if(!els.length) return;
+
+  var revealAll = function(){
+    els.forEach(function(el){ el.classList.add('sr--on'); });
+    els = [];
+  };
+
+  // Reduced-motion or no requestAnimationFrame: just show everything.
+  if((window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+     !('requestAnimationFrame' in window)){
+    revealAll();
+    return;
+  }
+
+  var ticking = false;
+  var check = function(){
+    ticking = false;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    for(var i = els.length - 1; i >= 0; i--){
+      var r = els[i].getBoundingClientRect();
+      // Reveal once the section has entered the viewport (60px early, matching old rootMargin).
+      if(r.top < vh - 60 && r.bottom > 0){
+        els[i].classList.add('sr--on');
+        els.splice(i, 1);
+      }
+    }
+  };
+  var onScroll = function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(check); }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('load', check);
+  check();
+
+  // Absolute safety net: never leave content hidden.
+  setTimeout(revealAll, 3000);
+})();
+</script>
+</body>
+</html>
