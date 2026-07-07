@@ -2704,6 +2704,17 @@ html.js .sr--on {
   }
 }
 
+/* Mobile: no reveal animation at all. On iOS Safari both IntersectionObserver
+   and early scroll events proved unreliable, leaving sections invisible until
+   the JS safety-net fired — on phones content simply shows immediately. */
+@media (max-width: 780px) {
+  html.js .sr {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Service card image shimmer — already working, keep as-is */
 
 /* =========================

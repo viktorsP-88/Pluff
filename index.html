@@ -777,8 +777,11 @@ scheduleServicesAlign();
     els = [];
   };
 
-  // Reduced-motion or no requestAnimationFrame: just show everything.
-  if((window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+  // Mobile, reduced-motion or no requestAnimationFrame: just show everything.
+  // (On iOS Safari scroll-driven reveal proved unreliable — see styles.css.)
+  if(!window.matchMedia ||
+     window.matchMedia('(max-width: 780px)').matches ||
+     window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
      !('requestAnimationFrame' in window)){
     revealAll();
     return;
