@@ -2788,3 +2788,14 @@ html.js .sr--on {
     transition: none;
   }
 }
+
+/* Landscape phones: service cards go 2-up — full-width cards look oversized
+   when the viewport is short and wide. Matches the existing landscape gate. */
+@media (max-height: 500px) and (orientation: landscape){
+  .services__right{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .service-card{ max-width: none; margin-left: 0; }
+}
