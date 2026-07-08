@@ -64,6 +64,29 @@ html,body{background:#04112C}
   }
 })();
 </script>
+<script>
+/* Diagnostic overlay — only with ?debug in the URL. Shows which version the
+   device actually received and live loader/section state. */
+(function(){
+  if(!/[?&]debug/.test(location.search))return;
+  var box=document.createElement('div');
+  box.style.cssText='position:fixed;bottom:8px;left:8px;z-index:99999;background:rgba(0,0,0,.85);color:#4ade80;font:11px/1.5 monospace;padding:6px 9px;max-width:75vw;pointer-events:none;white-space:pre;border-radius:4px';
+  var t0=performance.now();
+  function tick(){
+    var l=document.getElementById('pluff-loader');
+    var lst=l?getComputedStyle(l).display+'/'+(+getComputedStyle(l).opacity).toFixed(2):'-';
+    var hid=0;document.querySelectorAll('.sr').forEach(function(e){if(getComputedStyle(e).opacity!=='1')hid++});
+    var img=document.querySelector('picture img');
+    box.textContent='PLUFF v3  t='+((performance.now()-t0)/1000).toFixed(1)+'s'
+      +'\nloader: '+lst
+      +'\nsr hidden: '+hid
+      +'\nhero img: '+(img?(img.complete?'loaded':'loading...'):'-')
+      +'\nvw: '+innerWidth;
+  }
+  function mount(){document.body.appendChild(box);tick();setInterval(tick,250);}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',mount);}else{mount();}
+})();
+</script>
 <div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
 <div aria-hidden="true" class="topbar-glow-clip"><div class="topbar-glow"></div></div>
 <header class="topbar" role="banner">
@@ -109,7 +132,7 @@ html,body{background:#04112C}
     <img class="lang-switch__flag" src="../images/flags/lv.svg" alt="LV">
   </a>
   <a class="lang-switch__btn is-active" href="index.html" lang="en" aria-label="English" data-tooltip="English">
-    <img class="lang-switch__flag" src="../images/flags/en.svg" alt="EN">
+    <img class="lang-switch__flag" src="../images/flags/en.svg?v=2" alt="EN">
   </a>
 </div>
 </div>
@@ -120,7 +143,7 @@ html,body{background:#04112C}
     <img class="lang-switch__flag" src="../images/flags/lv.svg" alt="LV">
   </a>
   <a class="lang-switch__btn is-active" href="index.html" lang="en" aria-label="English" data-tooltip="English">
-    <img class="lang-switch__flag" src="../images/flags/en.svg" alt="EN">
+    <img class="lang-switch__flag" src="../images/flags/en.svg?v=2" alt="EN">
   </a>
 </div>
 <a class="cta" href="#sazinaties">Contact</a>
@@ -688,13 +711,22 @@ scheduleServicesAlign();
     });
   };
 
-  // Start probing only after the page has loaded — the parallel probe batch
-  // otherwise competes with the hero image/video for mobile bandwidth.
-  const startDiscovery = () => discoverImages().then(urls => {
-    if (urls.length) buildCarousel(urls);
-  });
+  // Give the hero a bandwidth head start, but don't wait for the full page
+  // load (the hero video alone can hold it back for seconds on mobile) —
+  // start probing on window load OR after 1.5s, whichever comes first.
+  let discoveryStarted = false;
+  const startDiscovery = () => {
+    if (discoveryStarted) return;
+    discoveryStarted = true;
+    discoverImages().then(urls => {
+      if (urls.length) buildCarousel(urls);
+    });
+  };
   if (document.readyState === 'complete') startDiscovery();
-  else window.addEventListener('load', startDiscovery, { once: true });
+  else {
+    window.addEventListener('load', startDiscovery, { once: true });
+    setTimeout(startDiscovery, 1500);
+  }
 })();
 </script>
 <script>
