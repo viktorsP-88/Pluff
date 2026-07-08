@@ -2799,3 +2799,19 @@ html.js .sr--on {
   }
   .service-card{ max-width: none; margin-left: 0; }
 }
+
+/* Landscape phones: same phone, same reading distance — keep PHONE typography.
+   By width alone (~850-930px) landscape fell into the larger tablet bucket
+   (44px headings, 18px leads) on a 390px-tall screen. */
+@media (max-height: 500px) and (orientation: landscape){
+  :root{ --fs-h2: 36px; --fs-h3: 22px; --fs-h3s: 20px; }
+  .services__lead,
+  .whyus__lead,
+  .paveiktais__lead,
+  .about__lead,
+  .contact__lead{
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .hero__lead{ font-size: 16px; }
+}
