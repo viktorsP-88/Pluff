@@ -1509,7 +1509,7 @@ color: rgba(246, 243, 236, 0.64);
 
   background: #fff !important;
   color: rgb(var(--c-bg)) !important;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.01em;
   text-decoration: none;
 
@@ -2114,7 +2114,7 @@ a:hover{ text-decoration: none; }
   color: rgb(var(--c-text) / var(--op-text));
   text-decoration:none;
   font-family: "Inter", sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 22px;
   line-height: 1;
   border-radius: 12px;
@@ -2170,7 +2170,7 @@ a:hover{ text-decoration: none; }
   padding: 14px 16px;
   background: rgb(255 255 255 / 0.96);
   color: rgb(var(--c-bg));
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.01em;
   text-align:center;
 
@@ -2197,7 +2197,7 @@ a:hover{ text-decoration: none; }
 @media (max-width: 780px){
   .contact-map__actions .contact-action{
     padding: 12px 14px;
-    font-weight: 700;
+    font-weight: 600;
   }
 }
 
