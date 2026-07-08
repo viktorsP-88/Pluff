@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"/>
 <script>document.documentElement.className+=' js';</script>
 <style>
 html,body{background:#04112C}
@@ -25,9 +26,7 @@ html,body{background:#04112C}
 <meta content="PLUFF — augstas precizitātes ražošana" property="og:image:alt"/>
 <meta content="https://viktorsp-88.github.io/Pluff/" property="og:url"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Oswald:wght@400&amp;family=Geist+Mono:wght@300&amp;display=swap" rel="stylesheet"/>
+<link href="fonts/fonts.css?v=1" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
 <link rel="icon" type="image/x-icon" href="images/logo/favicon.ico">
 <link rel="apple-touch-icon" href="images/logo/favicon-256.png">
@@ -68,33 +67,6 @@ html,body{background:#04112C}
   } else {
     watchHero();
   }
-})();
-</script>
-<script>
-/* Diagnostic overlay — only with ?debug in the URL. Shows which version the
-   device actually received and live loader/section state. */
-(function(){
-  if(!/[?&]debug/.test(location.search))return;
-  var box=document.createElement('div');
-  box.style.cssText='position:fixed;bottom:8px;left:8px;z-index:99999;background:rgba(0,0,0,.85);color:#4ade80;font:11px/1.5 monospace;padding:6px 9px;max-width:75vw;pointer-events:none;white-space:pre;border-radius:4px';
-  var t0=performance.now();
-  function tick(){
-    var l=document.getElementById('pluff-loader');
-    var lst=l?getComputedStyle(l).display+'/'+(+getComputedStyle(l).opacity).toFixed(2):'-';
-    var hid=0;document.querySelectorAll('.sr').forEach(function(e){if(getComputedStyle(e).opacity!=='1')hid++});
-    var img=document.querySelector('picture img');
-    var svc=document.getElementById('services');
-    box.textContent='PLUFF v4  t='+((performance.now()-t0)/1000).toFixed(1)+'s  '+document.readyState
-      +'\nloader: '+lst
-      +'\nsr hidden: '+hid
-      +'\nhero img: '+(img?(img.complete?'loaded':'loading...'):'-')
-      +'\nservices h: '+(svc?Math.round(svc.getBoundingClientRect().height):'NAV DOM')
-      +'\nscrollY: '+Math.round(scrollY)+'  docH: '+Math.round(document.documentElement.scrollHeight)
-      +'\ncentr\u0101: '+(function(){var e=document.elementFromPoint(innerWidth/2,innerHeight/2);if(!e)return '-';var c=(typeof e.className==='string'&&e.className)?'.'+e.className.split(' ')[0]:'';return e.tagName+c;})()
-      +'\nvw: '+innerWidth;
-  }
-  function mount(){document.body.appendChild(box);tick();setInterval(tick,250);}
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',mount);}else{mount();}
 })();
 </script>
 <div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
@@ -270,7 +242,7 @@ html,body{background:#04112C}
 <a aria-label="Erica Synths" class="about-logo partner about-logo--erica" href="https://www.ericasynths.lv/" rel="noopener noreferrer" target="_blank">
 <img alt="Erica Synths logo" class="partner__img" decoding="async" loading="lazy" src="images/partners/erica-synths-logo.svg"/>
 </a>
-</div></div></section><section class="contact sr" id="sazinaties"><div class="wrap contact__wrap"><div class="contact__head contact__head--center"><h2 class="contact__title">Sazinies ar mums</h2><p class="contact__lead">Mēs palīdzam uzņēmumiem tikt pie gatava produkta – no idejas un rasējuma līdz precīzai formai un detaļai. Pastāsti, kā mēs varam palīdzēt tev!</p></div><div class="contact-box"><div class="contact-cards"><a class="contact-card" href="tel:+37129327257"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.06a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">TĀLRUNIS</span><span class="contact-card__value">+371 29327257</span></span></a><a class="contact-card" href="mailto:info@pluff.lv"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" ry="2" stroke="currentColor" stroke-width="2" width="20" x="2" y="4"></rect><path d="m22 7-10 7L2 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">E-PASTS</span><span class="contact-card__value">info@pluff.lv</span></span></a><a class="contact-card" href="https://www.google.com/maps/search/?api=1&amp;query=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">ADRESE</span><span class="contact-card__value">Ganību dambis 24 k-6, Rīga</span></span></a></div></div>
+</div></div></section><section class="contact sr" id="sazinaties"><div class="wrap contact__wrap"><div class="contact__head contact__head--center"><h2 class="contact__title">Sazinies ar mums</h2><p class="contact__lead">Mēs palīdzam uzņēmumiem tikt pie gatava produkta – no idejas un rasējuma līdz precīzai formai un detaļai. Pastāsti, kā mēs varam palīdzēt tev!</p></div><div class="contact-box"><div class="contact-cards"><a class="contact-card" href="tel:+37129327257"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.06a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">TĀLRUNIS</span><span class="contact-card__value">+371 29327257</span></span></a><a class="contact-card" href="#sazinaties" data-eu="info" data-ed="pluff.lv"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" ry="2" stroke="currentColor" stroke-width="2" width="20" x="2" y="4"></rect><path d="m22 7-10 7L2 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">E-PASTS</span><span class="contact-card__value">info [at] pluff.lv</span></span></a><a class="contact-card" href="https://www.google.com/maps/search/?api=1&amp;query=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="contact-card__badge"><svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><span class="contact-card__text"><span class="contact-card__label">ADRESE</span><span class="contact-card__value">Ganību dambis 24 k-6, Rīga</span></span></a></div></div>
 <div class="contact-map">
   <a class="contact-map__static"
      href="https://www.google.com/maps/search/?api=1&query=Gan%C4%ABbu+dambis+24+k-6%2C+R%C4%ABga"
@@ -876,6 +848,18 @@ scheduleServicesAlign();
 
   // Absolute safety net: never leave content hidden.
   setTimeout(revealAll, 3000);
+})();
+</script>
+<script>
+// Assemble the e-mail client-side so address harvesters scraping the raw
+// HTML don't pick it up. Without JS the card still shows a readable hint.
+(function(){
+  document.querySelectorAll('a[data-eu][data-ed]').forEach(function(a){
+    var addr = a.getAttribute('data-eu') + '@' + a.getAttribute('data-ed');
+    a.setAttribute('href', 'mailto:' + addr);
+    var v = a.querySelector('.contact-card__value');
+    if (v) v.textContent = addr;
+  });
 })();
 </script>
 </body>
