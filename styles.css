@@ -1037,7 +1037,9 @@ main{ padding-top: 104px; }
   inset:0;
   transform:translateX(-100%);
   background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.07) 50%,transparent 100%);
-  animation:ghost-sweep 1.9s ease-in-out infinite;
+  /* 0.9s delay: on fast connections images replace the placeholder before the
+     skeleton shimmer ever becomes visible — it only shows on slow loads. */
+  animation:ghost-sweep 1.9s ease-in-out 0.9s infinite;
   z-index:1;
 }
 @keyframes ghost-sweep{
@@ -2399,7 +2401,7 @@ a:hover{ text-decoration: none; }
 /* Inactive language is simply dimmed; the active one is full-strength. */
 .lang-switch__btn{ opacity: 0.3; }
 .lang-switch__btn:hover{ opacity: 0.7; }
-.lang-switch__btn.is-active{ opacity: 1; }
+.lang-switch__btn.is-active{ opacity: 1; background: rgb(255 255 255 / 0.10); }
 
 .lang-switch__flag{
   width:22px;

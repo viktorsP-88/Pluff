@@ -31,7 +31,7 @@ html,body{background:#04112C}
 <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
 <link rel="icon" type="image/x-icon" href="images/logo/favicon.ico">
 <link rel="apple-touch-icon" href="images/logo/favicon-256.png">
-<link href="styles.css?v=5" rel="stylesheet">
+<link href="styles.css?v=7" rel="stylesheet">
 </link></head>
 <body>
 <div id="pluff-loader" aria-hidden="true">
@@ -83,10 +83,13 @@ html,body{background:#04112C}
     var lst=l?getComputedStyle(l).display+'/'+(+getComputedStyle(l).opacity).toFixed(2):'-';
     var hid=0;document.querySelectorAll('.sr').forEach(function(e){if(getComputedStyle(e).opacity!=='1')hid++});
     var img=document.querySelector('picture img');
-    box.textContent='PLUFF v3  t='+((performance.now()-t0)/1000).toFixed(1)+'s'
+    var svc=document.getElementById('services');
+    box.textContent='PLUFF v4  t='+((performance.now()-t0)/1000).toFixed(1)+'s  '+document.readyState
       +'\nloader: '+lst
       +'\nsr hidden: '+hid
       +'\nhero img: '+(img?(img.complete?'loaded':'loading...'):'-')
+      +'\nservices h: '+(svc?Math.round(svc.getBoundingClientRect().height):'NAV DOM')
+      +'\nscrollY: '+Math.round(scrollY)+'  docH: '+Math.round(document.documentElement.scrollHeight)
       +'\nvw: '+innerWidth;
   }
   function mount(){document.body.appendChild(box);tick();setInterval(tick,250);}
@@ -168,7 +171,7 @@ html,body{background:#04112C}
 <source srcset="images/hero/hero-bg.png" type="image/png"/>
 <img alt="" decoding="async" loading="eager" fetchpriority="high" src="images/hero/hero-bg.png"/>
 </picture>
-<video class="hero__video" autoplay muted loop playsinline preload="metadata">
+<video class="hero__video" muted loop playsinline preload="none">
   <source src="images/hero/PLUFF_hero_1.mp4" type="video/mp4">
 </video>
 <!-- Hero text is part of the hero media frame (image + overlays). Padding is measured from this frame. -->
@@ -539,16 +542,21 @@ scheduleServicesAlign();
     }
   };
 
-  // Lazy-load service images with IntersectionObserver (load when ~200px before entering viewport)
-  const svcObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      svcObserver.unobserve(entry.target);
-      loadServiceMedia(entry.target);
-    });
-  }, { rootMargin: '200px 0px' });
-
-  mediaNodes.forEach(node => svcObserver.observe(node));
+  // Load ALL service media right after the hero has had a moment to win the
+  // bandwidth race. The previous IntersectionObserver lazy-load could skip
+  // firing on iOS Safari during momentum scrolling, leaving the cards as dark
+  // placeholder boxes — on the dark background that read as an empty page.
+  let svcMediaKicked = false;
+  const kickServiceMedia = () => {
+    if (svcMediaKicked) return;
+    svcMediaKicked = true;
+    mediaNodes.forEach(node => loadServiceMedia(node));
+  };
+  if (document.readyState === 'complete') kickServiceMedia();
+  else {
+    window.addEventListener('load', kickServiceMedia, { once: true });
+    setTimeout(kickServiceMedia, 900);
+  }
 
 
   // click -> scroll to the corresponding block (stable, no extra post-scroll nudge)
@@ -797,6 +805,22 @@ scheduleServicesAlign();
   var v = document.querySelector('.hero__video');
   if (!v) return;
   v.addEventListener('canplay', function(){ v.classList.add('is-ready'); }, { once: true });
+  // Start fetching the 560K video only after the rest of the first screen is
+  // in — with preload/autoplay it was competing with images for bandwidth.
+  var kicked = false;
+  var kick = function(){
+    if (kicked) return; kicked = true;
+    try {
+      v.load();
+      var pr = v.play();
+      if (pr && pr.catch) pr.catch(function(){});
+    } catch(e) {}
+  };
+  if (document.readyState === 'complete') setTimeout(kick, 250);
+  else {
+    window.addEventListener('load', function(){ setTimeout(kick, 250); }, { once: true });
+    setTimeout(kick, 2500);
+  }
 })();
 </script>
 
