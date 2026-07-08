@@ -2393,10 +2393,13 @@ a:hover{ text-decoration: none; }
   padding:0 !important;
   border:0;
   line-height:0;
-  transition: transform 140ms ease, filter 140ms ease, background 140ms ease;
+  transition: transform 140ms ease, filter 140ms ease, background 140ms ease, opacity 140ms ease;
 }
 .lang-switch__btn:hover{ filter: brightness(1.06); transform: translateY(-0.5px); }
-.lang-switch__btn.is-active{ background: rgb(255 255 255 / 0.92); }
+/* Inactive language is simply dimmed; the active one is full-strength. */
+.lang-switch__btn{ opacity: 0.3; }
+.lang-switch__btn:hover{ opacity: 0.7; }
+.lang-switch__btn.is-active{ opacity: 1; }
 
 .lang-switch__flag{
   width:22px;
